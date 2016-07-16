@@ -2,13 +2,48 @@ package pl.lodz.p.domain.entities;
 
 import java.util.List;
 
-public class VLAN implements Testable{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "vlan")
+public class VLAN implements Testable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vlan_seq_gen")
+	@SequenceGenerator(name = "vlan_seq_gen", sequenceName = "vlan_seq")
+	private Integer id;
+	@Column
 	private Integer number;
+	@Column
 	private VLANType type;
+	@OneToMany
+	@JoinTable(name = "test_script_vlan", joinColumns = @JoinColumn(name = "vlan_id"),
+			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
 	private List<TestScript> testScripts;
+	@ManyToMany
+	@JoinTable(name = "network_interface_vlan",
+			joinColumns = @JoinColumn(name = "vlan_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(
+					name = "network_interface_id", referencedColumnName = "id"))
 	private List<NetworkInterface> networkInterfaces;
-	
+	@ManyToMany
+	@JoinTable(name = "vlan_vlan", joinColumns = @JoinColumn(name = "first_vlan_id"), inverseJoinColumns = @JoinColumn(
+			name = "second_vlan_id"))
+	private List<VLAN> vlans;
+	@ManyToMany
+	@JoinTable(name = "vlan_network", joinColumns = @JoinColumn(name = "vlan_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "network_id", referencedColumnName = "id"))
+	private List<Network> networks;
+
 	public Integer getNumber() {
 		return number;
 	}
@@ -39,6 +74,22 @@ public class VLAN implements Testable{
 
 	public void setNetworkInterfaces(List<NetworkInterface> networkInterfaces) {
 		this.networkInterfaces = networkInterfaces;
+	}
+
+	public List<VLAN> getVlans() {
+		return vlans;
+	}
+
+	public void setVlans(List<VLAN> vlans) {
+		this.vlans = vlans;
+	}
+
+	public List<Network> getNetworks() {
+		return networks;
+	}
+
+	public void setNetworks(List<Network> networks) {
+		this.networks = networks;
 	}
 
 	@Override

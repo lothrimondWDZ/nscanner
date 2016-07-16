@@ -346,6 +346,12 @@
             <artifactId>metrics-spark-reporter</artifactId>
             <version>${metrics-spark-reporter.version}</version>
         </dependency>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>
+        		spring-boot-starter-data-elasticsearch
+        	</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>

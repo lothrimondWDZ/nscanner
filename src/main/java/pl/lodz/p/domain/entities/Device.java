@@ -2,23 +2,62 @@ package pl.lodz.p.domain.entities;
 
 import java.util.List;
 
-import org.bouncycastle.util.IPAddress;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
-public class Device implements Testable{
+@Entity
+@Table(name = "device")
+public class Device implements Testable {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "device_seq_gen")
+	@SequenceGenerator(name = "device_seq_gen", sequenceName = "device_seq")
+	private Integer id;
+	@Column
 	private String name;
+	@Column
+	private String description;
+	@OneToMany
+	@JoinTable(name = "network_interface_device", joinColumns = @JoinColumn(name = "device_id"),
+			inverseJoinColumns = @JoinColumn(name = "network_interface_id"))
 	private List<NetworkInterface> networkInterfaces;
-	private List<VLAN> availableVlans;
+	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
+	@JoinTable(name = "device_device", joinColumns = { @JoinColumn(name = "first_device_id",
+			referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "second_device_id",
+			referencedColumnName = "id") })
+	private List<Device> devices;
+	@OneToMany
+	@JoinTable(name = "test_script_device", joinColumns = @JoinColumn(name = "device_id"),
+			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
 	private List<TestScript> testScripts;
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public List<NetworkInterface> getNetworkInterfaces() {
 		return networkInterfaces;
 	}
@@ -27,12 +66,12 @@ public class Device implements Testable{
 		this.networkInterfaces = networkInterfaces;
 	}
 
-	public List<VLAN> getAvailableVlans() {
-		return availableVlans;
+	public List<Device> getDevices() {
+		return devices;
 	}
-	
-	public void setAvailableVlans(List<VLAN> availableVlans) {
-		this.availableVlans = availableVlans;
+
+	public void setDevices(List<Device> devices) {
+		this.devices = devices;
 	}
 
 	public List<TestScript> getTestScripts() {
@@ -48,5 +87,5 @@ public class Device implements Testable{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
+
 }

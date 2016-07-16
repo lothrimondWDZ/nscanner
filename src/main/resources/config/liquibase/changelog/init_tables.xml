@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create sequences" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE SEQUENCE ip_address_seq;
+    	CREATE SEQUENCE network_interface_seq;
+    	CREATE SEQUENCE vlan_seq;
+    	CREATE SEQUENCE device_seq;
+    	CREATE SEQUENCE test_script_seq;
+    	CREATE SEQUENCE network_seq;
+    	CREATE SEQUENCE network_service_seq;
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create DEVICE table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE device(
+    		id INT NOT NULL PRIMARY KEY,
+    		name VARCHAR(100) NOT NULL,
+    		description VARCHAR(255) NOT NULL
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create VLAN table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE vlan(
+    		id INT NOT NULL PRIMARY KEY,
+    		number INT NOT NULL,
+    		type VARCHAR(20) NOT NULL CHECK(type IN('QinQ','VXLAN'))
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create NETWORK_INTERFACE table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE network_interface(
+    		id INT NOT NULL PRIMARY KEY,
+    		name VARCHAR(100) NOT NULL,
+    		description VARCHAR(255) NOT NULL,
+    		type VARCHAR(50) NOT NULL CHECK(type IN('TRUNK','ACCESS'))
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create NETWORK_SERVICE table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE network_service(
+    		id INT NOT NULL PRIMARY KEY,
+    		name VARCHAR(100) NOT NULL,
+    		description VARCHAR(255) NOT NULL,
+    		port INT NOT NULL,
+    		network_interface_id INT NOT NULL REFERENCES network_interface(id)
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create TEST_SCRIPT table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE test_script(
+    		id INT NOT NULL PRIMARY KEY,
+    		name VARCHAR(100) NOT NULL,
+    		description VARCHAR(255) NOT NULL,
+    		path VARCHAR(255) NOT NULL
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create IP_ADDRESS table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE ip_address(
+    		id INT NOT NULL PRIMARY KEY,
+    		address VARCHAR(100) NOT NULL,
+    		type VARCHAR(10) NOT NULL CHECK(type IN('IPv4','IPv6')),
+    		network_interface_id INT NOT NULL REFERENCES network_interface(id)
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create NETWORK table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE network(
+    		id INT NOT NULL PRIMARY KEY,
+    		name VARCHAR(100) NOT NULL,
+    		network_address INT NOT NULL REFERENCES ip_address(id),
+    		broadcast INT NOT NULL REFERENCES ip_address(id),
+    		mask INT NOT NULL   		
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create VLAN_VLAN table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE vlan_vlan(
+    		first_vlan_id INT NOT NULL REFERENCES vlan(id),
+    		second_vlan_id INT NOT NULL REFERENCES vlan(id)
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create DEVICE_DEVICE table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE device_device(
+    		first_device_id INT NOT NULL REFERENCES device(id),
+    		second_device_id INT NOT NULL REFERENCES device(id)
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create NETWORK_INTERFACE_VLAN table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE network_interface_vlan(
+    		netwotk_interface_id INT NOT NULL REFERENCES network_interface(id),
+    		vlan_id INT NOT NULL REFERENCES vlan(id)
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create VLAN_NETWORK table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE vlan_network(
+    		network_id INT NOT NULL REFERENCES network(id),
+    		vlan_id INT NOT NULL REFERENCES vlan(id)
+    	);
+    </sql>
+    </changeSet>
+
+    <changeSet id="create TEST_SCRIPT_VLAN table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE test_script_vlan(
+    		test_script_id INT NOT NULL REFERENCES test_script(id),
+    		vlan_id INT NOT NULL REFERENCES vlan(id)
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create TEST_SCRIPT_DEVICE table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE test_script_device(
+    		test_script_id INT NOT NULL REFERENCES test_script(id),
+    		device_id INT NOT NULL REFERENCES device(id)
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create TEST_SCRIPT_NETWORK_SERVICE table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE test_script_network_service(
+    		test_script_id INT NOT NULL REFERENCES test_script(id),
+    		network_service_id INT NOT NULL REFERENCES network_service(id)
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create NETWORK_INTERFACE_DEVICE table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE network_interface_device(
+    		network_interface_id INT NOT NULL REFERENCES network_interface(id),
+    		device INT NOT NULL REFERENCES device(id)
+    	);
+    </sql>
+    </changeSet>
+</databaseChangeLog>
