@@ -44,6 +44,14 @@ public class VLAN implements Testable {
 			inverseJoinColumns = @JoinColumn(name = "network_id", referencedColumnName = "id"))
 	private List<Network> networks;
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public Integer getNumber() {
 		return number;
 	}
