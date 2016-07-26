@@ -22,9 +22,6 @@ public class DeviceMapper {
 		}
 		result.setName(device.getName());
 		result.setDescription(device.getDescription());
-		result.setDevices(device.getDevices());
-		result.setNetworkInterfaces(device.getNetworkInterfaces());
-		result.setTestScripts(device.getTestScripts());
 		return result;
 	}
 
@@ -33,9 +30,6 @@ public class DeviceMapper {
 		result.setId(device.getId());
 		result.setName(device.getName());
 		result.setDescription(device.getDescription());
-		result.setDevices(device.getDevices());
-		result.setNetworkInterfaces(device.getNetworkInterfaces());
-		result.setTestScripts(device.getTestScripts());
 		return result;
 	}
 }

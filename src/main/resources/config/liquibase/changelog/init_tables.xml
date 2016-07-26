@@ -160,7 +160,7 @@
     <sql splitStatements="false">
     	CREATE TABLE network_interface_device(
     		network_interface_id INT NOT NULL REFERENCES network_interface(id),
-    		device INT NOT NULL REFERENCES device(id)
+    		device_id INT NOT NULL REFERENCES device(id)
     	);
     </sql>
     </changeSet>
