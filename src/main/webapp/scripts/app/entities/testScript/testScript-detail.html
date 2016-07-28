@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="nScannerApp.testScript.detail.title">TestScript</span> {{testScript.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.testScript.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{testScript.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.testScript.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{testScript.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.testScript.cronExpression">CronExpression</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{testScript.cronExpression}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.testScript.path">Path</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{testScript.path}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

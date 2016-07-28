@@ -1,0 +1,62 @@
+<div>
+    <h2 translate="nScannerApp.testScript.home.title">TestScripts</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="testScript.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="nScannerApp.testScript.home.createLabel">Create a new TestScript</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="nScannerApp.testScript.name">Name</th>
+                    <th translate="nScannerApp.testScript.description">Description</th>
+                    <th translate="nScannerApp.testScript.cronExpression">CronExpression</th>
+                    <th translate="nScannerApp.testScript.path">Path</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="testScript in testScripts track by testScript.id">
+                    <td><a ui-sref="testScript.detail({id:testScript.id})">{{testScript.id}}</a></td>
+                    <td>{{testScript.name}}</td>
+                    <td>{{testScript.description}}</td>
+                    <td>{{testScript.cronExpression}}</td>
+                    <td>{{testScript.path}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="testScript.detail({id:testScript.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="testScript.edit({id:testScript.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="testScript.delete({id:testScript.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pager">
+                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a href="#">&lt;&lt;</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a href="#">&lt;</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="#">&gt;</a></li>
+                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a href="#">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

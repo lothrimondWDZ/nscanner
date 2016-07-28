@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import pl.lodz.p.domain.entities.TestScript;
 
-public interface TestScriptRepository extends JpaRepository<TestScript, Integer> {
+public interface TestScriptRepository extends JpaRepository<TestScript, Long> {
 
 }

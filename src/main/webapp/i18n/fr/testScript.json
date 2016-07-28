@@ -1,0 +1,25 @@
+{
+    "nScannerApp": {
+        "testScript" : {
+            "home": {
+                "title": "TestScripts",
+                "createLabel": "Créer un nouveau TestScript",
+                "createOrEditLabel": "Créer ou éditer un TestScript"
+            },
+            "created": "Un nouveau TestScript a été créé avec l'identifiant {{ param }}",
+            "updated": "Le TestScript avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le TestScript avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le TestScript {{ id }} ?"
+            },
+            "detail": {
+                "title": "TestScript"
+            },
+            "name": "Name",
+            "description": "Description",
+            "cronExpression": "CronExpression",
+            "path": "Path"
+        }
+    }
+}
+
