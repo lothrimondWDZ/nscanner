@@ -1,0 +1,28 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "networkAddress",
+            "otherEntityName": "iPaddress",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "network"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "mask",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20160731105352",
+    "dto": "no",
+    "pagination": "pager"
+}

@@ -8,6 +8,8 @@
                 "main": "Entités",
                 "device": "Device",
                 "testScript": "TestScript",
+                "ipaddress": "IPaddress",
+                "network": "Network",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

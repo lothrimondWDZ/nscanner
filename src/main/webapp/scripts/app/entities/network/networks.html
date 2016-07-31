@@ -1,0 +1,62 @@
+<div>
+    <h2 translate="nScannerApp.network.home.title">Networks</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="network.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="nScannerApp.network.home.createLabel">Create a new Network</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="nScannerApp.network.name">Name</th>
+                    <th translate="nScannerApp.network.mask">Mask</th>
+                    <th translate="nScannerApp.network.networkAddress">networkAddress</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="network in networks track by network.id">
+                    <td><a ui-sref="network.detail({id:network.id})">{{network.id}}</a></td>
+                    <td>{{network.name}}</td>
+                    <td>{{network.mask}}</td>
+                    <td>
+                        <a ui-sref="iPaddress.detail({id:network.networkAddress.id})">{{network.networkAddress.id}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="network.detail({id:network.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="network.edit({id:network.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="network.delete({id:network.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pager">
+                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a href="#">&lt;&lt;</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a href="#">&lt;</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="#">&gt;</a></li>
+                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a href="#">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

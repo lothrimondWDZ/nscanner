@@ -23,14 +23,14 @@ public class Network {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "network_seq_gen")
 	@SequenceGenerator(name = "network_seq_gen", sequenceName = "network_seq")
-	private Integer id;
+	private Long id;
 	@Column
 	private String name;
 	@JoinColumn(name = "network_address")
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "network", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private IPaddress networkAddress;
 	@JoinColumn(name = "broadcast")
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "network", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private IPaddress broadcast;
 	@ManyToMany
 	@JoinTable(name = "device_device", joinColumns = @JoinColumn(name = "first_device_id"),
@@ -39,11 +39,11 @@ public class Network {
 	@Column
 	private Integer mask;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

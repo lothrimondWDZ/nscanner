@@ -1,0 +1,20 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "type",
+            "fieldType": "IPAddressType",
+            "fieldValues": "asd"
+        }
+    ],
+    "changelogDate": "20160729143530",
+    "dto": "no",
+    "pagination": "no"
+}

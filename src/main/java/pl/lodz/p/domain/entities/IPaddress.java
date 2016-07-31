@@ -2,13 +2,11 @@ package pl.lodz.p.domain.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,13 +17,11 @@ public class IPaddress {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ip_address_seq_gen")
 	@SequenceGenerator(name = "ip_address_seq_gen", sequenceName = "ip_address_seq")
-	private Integer id;
+	private Long id;
 	@Column
 	private String address;
 	@Column
 	private IPaddressType type;
-	@OneToOne(fetch = FetchType.LAZY)
-	private Network network;
 	@ManyToOne
 	@JoinColumn(name = "network_interface_id")
 	private NetworkInterface networkInterface;
@@ -36,6 +32,14 @@ public class IPaddress {
 	public IPaddress(final String address, final IPaddressType type) {
 		this.address = address;
 		this.type = type;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getAddress() {
@@ -52,22 +56,6 @@ public class IPaddress {
 
 	public void setType(IPaddressType type) {
 		this.type = type;
-	}
-
-	public Network getNetwork() {
-		return network;
-	}
-
-	public void setNetwork(Network network) {
-		this.network = network;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public NetworkInterface getNetworkInterface() {

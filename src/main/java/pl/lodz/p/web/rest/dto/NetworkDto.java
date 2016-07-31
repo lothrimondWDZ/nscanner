@@ -7,18 +7,18 @@ import pl.lodz.p.domain.entities.IPaddress;
 
 public class NetworkDto {
 
-	private Integer id;
+	private Long id;
 	private String name;
 	private IPaddress networkAddress;
 	private IPaddress broadcast;
 	private List<Device> connectedDevices;
 	private Integer mask;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

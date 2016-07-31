@@ -1,0 +1,22 @@
+{
+    "nScannerApp": {
+        "ipaddress" : {
+            "home": {
+                "title": "IPaddresss",
+                "createLabel": "Create a new IPaddress",
+                "createOrEditLabel": "Create or edit a IPaddress"
+            },
+            "created": "A new IPaddress is created with identifier {{ param }}",
+            "updated": "A IPaddress is updated with identifier {{ param }}",
+            "deleted": "A IPaddress is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete IPaddress {{ id }}?"
+            },
+            "detail": {
+                "title": "IPaddress"
+            },
+            "address": "Address",
+            "type": "Type"
+        }
+    }
+}

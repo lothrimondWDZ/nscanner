@@ -1,0 +1,38 @@
+
+<div>
+    <h2><span translate="nScannerApp.ipaddress.detail.title">IPaddress</span> {{ipaddress.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.ipaddress.address">Address</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{ipaddress.address}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.ipaddress.type">Type</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'nScannerApp.IPAddressType.' + ipaddress.type}}">{{ipaddress.type}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

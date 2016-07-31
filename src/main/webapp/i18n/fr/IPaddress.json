@@ -1,0 +1,23 @@
+{
+    "nScannerApp": {
+        "ipaddress" : {
+            "home": {
+                "title": "IPaddresss",
+                "createLabel": "Créer un nouveau IPaddress",
+                "createOrEditLabel": "Créer ou éditer un IPaddress"
+            },
+            "created": "Un nouveau IPaddress a été créé avec l'identifiant {{ param }}",
+            "updated": "Le IPaddress avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le IPaddress avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le IPaddress {{ id }} ?"
+            },
+            "detail": {
+                "title": "IPaddress"
+            },
+            "address": "Address",
+            "type": "Type"
+        }
+    }
+}
+
