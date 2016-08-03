@@ -1,25 +1,21 @@
 package pl.lodz.p.domain.entities;
 
-import java.io.IOException;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.quartz.DisallowConcurrentExecution;
-import org.quartz.Job;
-import org.quartz.JobDataMap;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-
 @Entity
 @Table(name = "test_script")
-@DisallowConcurrentExecution
-public class TestScript implements Job {
+public class TestScript {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "test_script_seq_gen")
@@ -33,6 +29,10 @@ public class TestScript implements Job {
 	private String cronExpression;
 	@Column
 	private String path;
+	@OneToMany(mappedBy = "testScript", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Parameter> parameters;
+	@Column(name = "last_result")
+	private Integer lastResult;
 
 	public Long getId() {
 		return id;
@@ -74,15 +74,20 @@ public class TestScript implements Job {
 		this.path = path;
 	}
 
-	@Override
-	public void execute(JobExecutionContext context) throws JobExecutionException {
-		JobDataMap data = context.getJobDetail().getJobDataMap();
-		String path = data.getString("path");
-		try {
-			Process p = new ProcessBuilder(path).start();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public List<Parameter> getParameters() {
+		return parameters;
+	}
+
+	public void setParameters(List<Parameter> parameters) {
+		this.parameters = parameters;
+	}
+
+	public Integer getLastResult() {
+		return lastResult;
+	}
+
+	public void setLastResult(Integer lastResult) {
+		this.lastResult = lastResult;
 	}
 
 }

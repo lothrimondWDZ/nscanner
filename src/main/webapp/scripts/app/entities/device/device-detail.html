@@ -26,6 +26,22 @@
                     <span class="form-control-static">{{device.description}}</span>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.device.childDevices">Child devices</span>
+                </td>
+                <td>
+                    <span ng-repeat="child in device.devices" class="form-control-static">{{child.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.device.testScripts">Test scripts</span>
+                </td>
+                <td>
+                    <span ng-repeat="script in device.testScripts" class="form-control-static">{{script.name}}</span>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

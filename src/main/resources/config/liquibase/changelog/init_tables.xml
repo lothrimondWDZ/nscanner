@@ -66,7 +66,18 @@
     		name VARCHAR(100) NOT NULL,
     		description VARCHAR(255) NOT NULL,
     		cron_expression VARCHAR(50) NOT NULL,
-    		path VARCHAR(255) NOT NULL
+    		path VARCHAR(255) NOT NULL,
+    		last_result INT
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create PARAMETER table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE parameter(
+    		id INT NOT NULL PRIMARY KEY,
+    		test_script INT NOT NULL REFERENCES test_script(id),
+    		value VARCHAR(255) NOT NULL
     	);
     </sql>
     </changeSet>

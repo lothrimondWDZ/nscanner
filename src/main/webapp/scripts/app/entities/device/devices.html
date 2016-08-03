@@ -18,6 +18,8 @@
                     <th translate="global.field.id">ID</th>
                     <th translate="nScannerApp.device.name">Name</th>
                     <th translate="nScannerApp.device.description">Description</th>
+                    <th translate="nScannerApp.device.childDevices">Child devices</th>
+                    <th translate="nScannerApp.device.testScripts">Test scripts</th>
                     <th></th>
                 </tr>
             </thead>
@@ -26,6 +28,12 @@
                     <td><a ui-sref="device.detail({id:device.id})">{{device.id}}</a></td>
                     <td>{{device.name}}</td>
                     <td>{{device.description}}</td>
+                    <td ng-repeat="child in device.devices">
+                    	<a ui-sref="device.detail({id:child.id})">{{child.name}}</a>
+                    </td>
+                    <td ng-repeat="script in device.testScripts">
+                    	<a ui-sref="testScript.detail({id:script.id})">{{script.name}}</a>
+                    </td>
                     <td>
                         <button type="submit"
                                 ui-sref="device.detail({id:device.id})"

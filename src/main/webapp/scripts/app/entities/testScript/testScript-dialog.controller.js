@@ -10,6 +10,17 @@ angular.module('nScannerApp').controller('TestScriptDialogController',
                 $scope.testScript = result;
             });
         };
+        
+        $scope.addParam = function() {
+        	if($scope.testScript.parameters == undefined){
+        		$scope.testScript.parameters = [];
+        	}
+        	$scope.testScript.parameters.push({id: null, value: null});
+        };
+        
+        $scope.removeParam = function(index) {
+        	$scope.testScript.parameters.splice(index, 1);
+        }
 
         var onSaveSuccess = function (result) {
             $scope.$emit('nScannerApp:testScriptUpdate', result);

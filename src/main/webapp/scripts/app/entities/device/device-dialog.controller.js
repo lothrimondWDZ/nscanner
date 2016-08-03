@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('nScannerApp').controller('DeviceDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Device',
-        function($scope, $stateParams, $modalInstance, entity, Device) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Device', 'TestScript',
+        function($scope, $stateParams, $modalInstance, entity, Device, TestScript) {
 
         $scope.device = entity;
         $scope.load = function(id) {
@@ -10,6 +10,12 @@ angular.module('nScannerApp').controller('DeviceDialogController',
                 $scope.device = result;
             });
         };
+        Device.query(function(result) {
+        	$scope.devices = result;
+        });
+        TestScript.query(function(result){
+        	$scope.testScripts = result;
+        });
 
         var onSaveSuccess = function (result) {
             $scope.$emit('nScannerApp:deviceUpdate', result);
@@ -23,6 +29,7 @@ angular.module('nScannerApp').controller('DeviceDialogController',
 
         $scope.save = function () {
             $scope.isSaving = true;
+            console.log($scope.device);
             if ($scope.device.id != null) {
                 Device.update($scope.device, onSaveSuccess, onSaveError);
             } else {

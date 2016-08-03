@@ -42,6 +42,14 @@
                     <span class="form-control-static">{{testScript.path}}</span>
                 </td>
             </tr>
+            <tr>
+            	<td>
+                    <span translate="nScannerApp.testScript.parameters">Parameters</span>
+                </td>
+                <td>
+                    <span ng-repeat="parameter in testScript.parameters" class="form-control-static">{{parameter.value}}&nbsp;</span>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

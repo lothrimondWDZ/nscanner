@@ -1,17 +1,15 @@
 package pl.lodz.p.domain.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -32,15 +30,19 @@ public class Device implements Testable {
 	@JoinTable(name = "network_interface_device", joinColumns = @JoinColumn(name = "device_id"),
 			inverseJoinColumns = @JoinColumn(name = "network_interface_id"))
 	private List<NetworkInterface> networkInterfaces;
-	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
-	@JoinTable(name = "device_device", joinColumns = { @JoinColumn(name = "first_device_id",
-			referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "second_device_id",
-			referencedColumnName = "id") })
+	@OneToMany
+	@JoinTable(name = "device_device", joinColumns = @JoinColumn(name = "first_device_id"),
+			inverseJoinColumns = @JoinColumn(name = "second_device_id"))
 	private List<Device> devices;
 	@OneToMany
 	@JoinTable(name = "test_script_device", joinColumns = @JoinColumn(name = "device_id"),
 			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
 	private List<TestScript> testScripts;
+
+	public Device() {
+		this.devices = new ArrayList<>();
+		this.testScripts = new ArrayList<>();
+	}
 
 	public Long getId() {
 		return id;
@@ -79,7 +81,7 @@ public class Device implements Testable {
 	}
 
 	public void setDevices(List<Device> devices) {
-		this.devices = devices;
+		this.devices.addAll(devices);
 	}
 
 	public List<TestScript> getTestScripts() {
@@ -87,7 +89,7 @@ public class Device implements Testable {
 	}
 
 	public void setTestScripts(List<TestScript> tests) {
-		this.testScripts = tests;
+		this.testScripts.addAll(tests);
 	}
 
 	@Override

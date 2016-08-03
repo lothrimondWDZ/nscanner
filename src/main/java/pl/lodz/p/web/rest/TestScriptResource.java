@@ -22,9 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import pl.lodz.p.domain.entities.DynamicJob;
 import pl.lodz.p.domain.entities.TestScript;
 import pl.lodz.p.repository.TestScriptRepository;
-import pl.lodz.p.service.DynamicJob;
+import pl.lodz.p.service.DynamicJobService;
 import pl.lodz.p.web.rest.util.HeaderUtil;
 import pl.lodz.p.web.rest.util.PaginationUtil;
 
@@ -43,7 +44,7 @@ public class TestScriptResource {
 	private TestScriptRepository repository;
 
 	@Autowired
-	private DynamicJob service;
+	private DynamicJobService service;
 
 	/**
 	 * POST /testScripts -> Create a new testScripts.
@@ -56,8 +57,13 @@ public class TestScriptResource {
 			return ResponseEntity.badRequest().header("Failure", "A new testScripts cannot already have an ID")
 					.body(null);
 		}
+		testScripts.getParameters().forEach(param -> {
+			if (param.getTestScript() == null) {
+				param.setTestScript(testScripts);
+			}
+		});
 		TestScript result = repository.save(testScripts);
-		service.schedule(result);
+		service.schedule(new DynamicJob(testScripts));
 		return ResponseEntity.created(new URI("/api/testScripts/" + result.getId()))
 				.headers(HeaderUtil.createEntityCreationAlert("testScripts", result.getId().toString())).body(result);
 	}
@@ -72,6 +78,11 @@ public class TestScriptResource {
 		if (testScripts.getId() == null) {
 			return createTestScript(testScripts);
 		}
+		testScripts.getParameters().forEach(param -> {
+			if (param.getTestScript() == null) {
+				param.setTestScript(testScripts);
+			}
+		});
 		TestScript result = repository.save(testScripts);
 		return ResponseEntity.ok()
 				.headers(HeaderUtil.createEntityUpdateAlert("testScripts", testScripts.getId().toString()))

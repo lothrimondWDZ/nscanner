@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,8 +82,13 @@ public class DeviceResource {
 	 */
 	@RequestMapping(value = "/devices", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
+	@Transactional
 	public ResponseEntity<List<Device>> getAllDevices(Pageable pageable) throws URISyntaxException {
 		Page<Device> page = deviceRepository.findAll(pageable);
+		page.getContent().forEach(d -> {
+			d.getDevices().size();
+			d.getTestScripts().size();
+		});
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/devices");
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}

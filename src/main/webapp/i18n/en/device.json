@@ -16,7 +16,9 @@
                 "title": "Device"
             },
             "name": "Name",
-            "description": "Description"
+            "description": "Description",
+            "childDevices": "Child devices",
+            "testScripts": "Test scripts"
         }
     }
 }
