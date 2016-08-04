@@ -29,7 +29,6 @@ angular.module('nScannerApp').controller('DeviceDialogController',
 
         $scope.save = function () {
             $scope.isSaving = true;
-            console.log($scope.device);
             if ($scope.device.id != null) {
                 Device.update($scope.device, onSaveSuccess, onSaveError);
             } else {

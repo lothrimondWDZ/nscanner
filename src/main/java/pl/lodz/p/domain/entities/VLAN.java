@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,10 +23,11 @@ public class VLAN implements Testable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vlan_seq_gen")
 	@SequenceGenerator(name = "vlan_seq_gen", sequenceName = "vlan_seq")
-	private Integer id;
+	private Long id;
 	@Column
 	private Integer number;
 	@Column
+	@Enumerated(EnumType.STRING)
 	private VLANType type;
 	@OneToMany
 	@JoinTable(name = "test_script_vlan", joinColumns = @JoinColumn(name = "vlan_id"),
@@ -44,11 +47,11 @@ public class VLAN implements Testable {
 			inverseJoinColumns = @JoinColumn(name = "network_id", referencedColumnName = "id"))
 	private List<Network> networks;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

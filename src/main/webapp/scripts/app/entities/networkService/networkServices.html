@@ -1,11 +1,11 @@
 <div>
-    <h2 translate="nScannerApp.device.home.title">Devices</h2>
+    <h2 translate="nScannerApp.networkService.home.title">NetworkServices</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary" ui-sref="device.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span translate="nScannerApp.device.home.createLabel">Create a new Device</span>
+                <button class="btn btn-primary" ui-sref="networkService.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="nScannerApp.networkService.home.createLabel">Create a new NetworkService</span>
                 </button>
             </div>
         </div>
@@ -16,37 +16,35 @@
             <thead>
                 <tr>
                     <th translate="global.field.id">ID</th>
-                    <th translate="nScannerApp.device.name">Name</th>
-                    <th translate="nScannerApp.device.description">Description</th>
-                    <th translate="nScannerApp.device.childDevices">Child devices</th>
-                    <th translate="nScannerApp.device.testScripts">Test scripts</th>
+                    <th translate="nScannerApp.networkService.name">Name</th>
+                    <th translate="nScannerApp.networkService.description">Description</th>
+                    <th translate="nScannerApp.networkService.port">Port</th>
+                    <th translate="nScannerApp.networkService.testScripts">Test scripts</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="device in devices track by device.id">
-                    <td><a ui-sref="device.detail({id:device.id})">{{device.id}}</a></td>
-                    <td>{{device.name}}</td>
-                    <td>{{device.description}}</td>
+                <tr ng-repeat="networkService in networkServices track by networkService.id">
+                    <td><a ui-sref="networkService.detail({id:networkService.id})">{{networkService.id}}</a></td>
+                    <td>{{networkService.name}}</td>
+                    <td>{{networkService.description}}</td>
+                    <td>{{networkService.port}}</td>
                     <td>
-                    	<a ng-repeat="child in device.devices" ui-sref="device.detail({id:child.id})">{{child.name}}&nbsp;</a>
-                    </td>
-                    <td>
-                    	<a ng-repeat="script in device.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
+                    	<a ng-repeat="script in networkService.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
                     </td>
                     <td>
                         <button type="submit"
-                                ui-sref="device.detail({id:device.id})"
+                                ui-sref="networkService.detail({id:networkService.id})"
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
-                                ui-sref="device.edit({id:device.id})"
+                                ui-sref="networkService.edit({id:networkService.id})"
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
-                                ui-sref="device.delete({id:device.id})"
+                                ui-sref="networkService.delete({id:networkService.id})"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>

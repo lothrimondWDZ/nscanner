@@ -1,0 +1,24 @@
+{
+    "nScannerApp": {
+        "networkInterface" : {
+            "home": {
+                "title": "NetworkInterfaces",
+                "createLabel": "Créer un nouveau NetworkInterface",
+                "createOrEditLabel": "Créer ou éditer un NetworkInterface"
+            },
+            "created": "Un nouveau NetworkInterface a été créé avec l'identifiant {{ param }}",
+            "updated": "Le NetworkInterface avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le NetworkInterface avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le NetworkInterface {{ id }} ?"
+            },
+            "detail": {
+                "title": "NetworkInterface"
+            },
+            "name": "Name",
+            "description": "Description",
+            "type": "Type"
+        }
+    }
+}
+

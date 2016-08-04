@@ -7,18 +7,18 @@ import pl.lodz.p.domain.entities.TestScript;
 
 public class NetworkServiceDto {
 
-	private Integer id;
+	private Long id;
 	private String name;
 	private String description;
 	private Integer port;
 	private NetworkInterface networkInterface;
 	private List<TestScript> testScripts;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

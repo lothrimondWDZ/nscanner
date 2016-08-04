@@ -149,4 +149,4 @@ Servers/
 hs_err_pid*
 /.apt_generated/
 .factorypath
-/data
+data/

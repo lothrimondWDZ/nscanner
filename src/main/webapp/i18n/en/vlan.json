@@ -1,0 +1,24 @@
+{
+    "nScannerApp": {
+        "vlan" : {
+            "home": {
+                "title": "VLANs",
+                "createLabel": "Create a new VLAN",
+                "createOrEditLabel": "Create or edit a VLAN"
+            },
+            "created": "A new VLAN is created with identifier {{ param }}",
+            "updated": "A VLAN is updated with identifier {{ param }}",
+            "deleted": "A VLAN is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete VLAN {{ id }}?"
+            },
+            "detail": {
+                "title": "VLAN"
+            },
+            "number": "Number",
+            "type": "Type",
+            "vlans": "Child VLANs",
+            "testScripts": "Test scripts"
+        }
+    }
+}

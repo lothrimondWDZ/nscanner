@@ -1,0 +1,9 @@
+{
+    "nScannerApp": {
+        "VLANType" : {
+            "null": "",
+            "VXLAN": "VXLAN",
+            "QinQ": "QinQ"
+        }
+    }
+}

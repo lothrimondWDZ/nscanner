@@ -1,0 +1,48 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myNetworkServiceLabel" translate="nScannerApp.networkService.home.createOrEditLabel">Create or edit a NetworkService</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="networkService.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.networkService.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="networkService.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.networkService.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="networkService.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.networkService.port" for="field_port">Port</label>
+            <input type="number" class="form-control" name="port" id="field_port"
+                    ng-model="networkService.port"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.networkService.testScripts" for="field_scripts">Test scripts</label>
+            <multiselect data-multiple="true" data-compare-by="id" ng-model="networkService.testScripts" options="script as ts.name for ts in testScripts" name="testScripts" id="field_scripts"></am-multiselect>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

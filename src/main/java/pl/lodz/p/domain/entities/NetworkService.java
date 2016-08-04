@@ -21,7 +21,7 @@ public class NetworkService implements Testable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "network_service_seq_gen")
 	@SequenceGenerator(name = "network_service_seq_gen", sequenceName = "network_service_seq")
-	private Integer id;
+	private Long id;
 	@Column
 	private String name;
 	@Column
@@ -36,11 +36,11 @@ public class NetworkService implements Testable {
 			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
 	private List<TestScript> testScripts;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

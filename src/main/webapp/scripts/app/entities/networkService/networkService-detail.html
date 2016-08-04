@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span translate="nScannerApp.device.detail.title">Device</span> {{device.id}}</h2>
+    <h2><span translate="nScannerApp.networkService.detail.title">NetworkService</span> {{networkService.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -12,34 +12,26 @@
             <tbody>
             <tr>
                 <td>
-                    <span translate="nScannerApp.device.name">Name</span>
+                    <span translate="nScannerApp.networkService.name">Name</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{device.name}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="nScannerApp.device.description">Description</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{device.description}}</span>
+                    <span class="form-control-static">{{networkService.name}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span translate="nScannerApp.device.childDevices">Child devices</span>
+                    <span translate="nScannerApp.networkService.description">Description</span>
                 </td>
                 <td>
-                    <span ng-repeat="child in device.devices" class="form-control-static">{{child.name}}&nbsp;</span>
+                    <span class="form-control-static">{{networkService.description}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span translate="nScannerApp.device.testScripts">Test scripts</span>
+                    <span translate="nScannerApp.networkService.port">Port</span>
                 </td>
                 <td>
-                    <span ng-repeat="script in device.testScripts" class="form-control-static">{{script.name}}&nbsp;</span>
+                    <span class="form-control-static">{{networkService.port}}</span>
                 </td>
             </tr>
             </tbody>

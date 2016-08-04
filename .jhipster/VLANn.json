@@ -1,0 +1,19 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "number",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "type",
+            "fieldType": "VLANType",
+            "fieldValues": "VXLAN,QinQ"
+        }
+    ],
+    "changelogDate": "20160804185450",
+    "dto": "no",
+    "pagination": "pager"
+}

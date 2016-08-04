@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,12 +24,13 @@ public class NetworkInterface {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "network_interface_seq_gen")
 	@SequenceGenerator(name = "network_interface_seq_gen", sequenceName = "network_interface_seq")
-	private Integer id;
+	private Long id;
 	@Column
 	private String name;
 	@Column
 	private String description;
 	@Column
+	@Enumerated(EnumType.STRING)
 	private NetworkInterfaceType type;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "networkInterface")
 	private List<IPaddress> addresses;
@@ -39,11 +42,11 @@ public class NetworkInterface {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "networkInterface")
 	private List<NetworkService> networkServices;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

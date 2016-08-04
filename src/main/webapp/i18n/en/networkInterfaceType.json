@@ -1,0 +1,9 @@
+{
+    "nScannerApp": {
+        "NetworkInterfaceType" : {
+            "null": "",
+            "TRUNK": "TRUNK",
+            "ACCESS": "ACCESS"
+        }
+    }
+}

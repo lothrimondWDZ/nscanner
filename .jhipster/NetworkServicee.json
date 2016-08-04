@@ -1,0 +1,23 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "port",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20160804195955",
+    "dto": "no",
+    "pagination": "pager"
+}

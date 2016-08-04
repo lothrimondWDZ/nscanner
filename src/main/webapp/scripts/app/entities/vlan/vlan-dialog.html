@@ -1,0 +1,47 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myVLANLabel" translate="nScannerApp.vlan.home.createOrEditLabel">Create or edit a VLAN</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vlan.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.vlan.number" for="field_number">Number</label>
+            <input type="number" class="form-control" name="number" id="field_number"
+                    ng-model="vlan.number"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.vlan.type" for="field_type">Type</label>
+            <select class="form-control" name="type" ng-model="vlan.type" id="field_type">
+                <option value="VXLAN" translate="nScannerApp.VLANType.VXLAN">VXLAN</option>
+                <option value="QinQ" translate="nScannerApp.VLANType.QinQ">QinQ</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.vlan.vlans" for="field_vlans">Child devices</label>
+            <multiselect data-multiple="true" data-compare-by="id" ng-model="vlan.vlans" options="child as v.number for v in vlans" name="vlans" id="field_vlans"></am-multiselect>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.vlan.testScripts" for="field_scripts">Test scripts</label>
+            <multiselect data-multiple="true" data-compare-by="id" ng-model="vlan.testScripts" options="script as ts.name for ts in testScripts" name="testScripts" id="field_scripts"></am-multiselect>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

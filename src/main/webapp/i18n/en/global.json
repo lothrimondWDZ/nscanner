@@ -10,6 +10,9 @@
                 "testScript": "TestScript",
                 "ipaddress": "IPaddress",
                 "network": "Network",
+                "vlan": "VLAN",
+                "networkService": "NetworkService",
+                "networkInterface": "NetworkInterface",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

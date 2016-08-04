@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span translate="nScannerApp.device.detail.title">Device</span> {{device.id}}</h2>
+    <h2><span translate="nScannerApp.vlan.detail.title">VLAN</span> {{vlan.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -12,34 +12,34 @@
             <tbody>
             <tr>
                 <td>
-                    <span translate="nScannerApp.device.name">Name</span>
+                    <span translate="nScannerApp.vlan.number">Number</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{device.name}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="nScannerApp.device.description">Description</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{device.description}}</span>
+                    <span class="form-control-static">{{vlan.number}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span translate="nScannerApp.device.childDevices">Child devices</span>
+                    <span translate="nScannerApp.vlan.type">Type</span>
                 </td>
                 <td>
-                    <span ng-repeat="child in device.devices" class="form-control-static">{{child.name}}&nbsp;</span>
+                    <span class="form-control-static" translate="{{'nScannerApp.VLANType.' + vlan.type}}">{{vlan.type}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span translate="nScannerApp.device.testScripts">Test scripts</span>
+                    <span translate="nScannerApp.vlan.vlans">Child VLANs</span>
                 </td>
                 <td>
-                    <span ng-repeat="script in device.testScripts" class="form-control-static">{{script.name}}&nbsp;</span>
+                    <span ng-repeat="child in vlan.vlans" class="form-control-static">{{child.number}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.vlan.testScripts">Test scripts</span>
+                </td>
+                <td>
+                    <span ng-repeat="script in vlan.testScripts" class="form-control-static">{{script.name}}</span>
                 </td>
             </tr>
             </tbody>

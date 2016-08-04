@@ -1,11 +1,11 @@
 <div>
-    <h2 translate="nScannerApp.device.home.title">Devices</h2>
+    <h2 translate="nScannerApp.networkInterface.home.title">NetworkInterfaces</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary" ui-sref="device.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span translate="nScannerApp.device.home.createLabel">Create a new Device</span>
+                <button class="btn btn-primary" ui-sref="networkInterface.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="nScannerApp.networkInterface.home.createLabel">Create a new NetworkInterface</span>
                 </button>
             </div>
         </div>
@@ -16,37 +16,31 @@
             <thead>
                 <tr>
                     <th translate="global.field.id">ID</th>
-                    <th translate="nScannerApp.device.name">Name</th>
-                    <th translate="nScannerApp.device.description">Description</th>
-                    <th translate="nScannerApp.device.childDevices">Child devices</th>
-                    <th translate="nScannerApp.device.testScripts">Test scripts</th>
+                    <th translate="nScannerApp.networkInterface.name">Name</th>
+                    <th translate="nScannerApp.networkInterface.description">Description</th>
+                    <th translate="nScannerApp.networkInterface.type">Type</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="device in devices track by device.id">
-                    <td><a ui-sref="device.detail({id:device.id})">{{device.id}}</a></td>
-                    <td>{{device.name}}</td>
-                    <td>{{device.description}}</td>
-                    <td>
-                    	<a ng-repeat="child in device.devices" ui-sref="device.detail({id:child.id})">{{child.name}}&nbsp;</a>
-                    </td>
-                    <td>
-                    	<a ng-repeat="script in device.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
-                    </td>
+                <tr ng-repeat="networkInterface in networkInterfaces track by networkInterface.id">
+                    <td><a ui-sref="networkInterface.detail({id:networkInterface.id})">{{networkInterface.id}}</a></td>
+                    <td>{{networkInterface.name}}</td>
+                    <td>{{networkInterface.description}}</td>
+                    <td translate="{{'nScannerApp.NetworkInterfaceType.' + networkInterface.type}}">{{networkInterface.type}}</td>
                     <td>
                         <button type="submit"
-                                ui-sref="device.detail({id:device.id})"
+                                ui-sref="networkInterface.detail({id:networkInterface.id})"
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
-                                ui-sref="device.edit({id:device.id})"
+                                ui-sref="networkInterface.edit({id:networkInterface.id})"
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
-                                ui-sref="device.delete({id:device.id})"
+                                ui-sref="networkInterface.delete({id:networkInterface.id})"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>

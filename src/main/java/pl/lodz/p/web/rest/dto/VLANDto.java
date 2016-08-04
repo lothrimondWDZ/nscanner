@@ -10,7 +10,7 @@ import pl.lodz.p.domain.entities.VLANType;
 
 public class VLANDto {
 
-	private Integer id;
+	private Long id;
 	private Integer number;
 	private VLANType type;
 	private List<TestScript> testScripts;
@@ -18,11 +18,11 @@ public class VLANDto {
 	private List<VLAN> vlans;
 	private List<Network> networks;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
