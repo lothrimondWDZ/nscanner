@@ -88,7 +88,7 @@
     		id INT NOT NULL PRIMARY KEY,
     		address VARCHAR(100) NOT NULL,
     		type VARCHAR(10) NOT NULL CHECK(type IN('IPv4','IPv6')),
-    		network_interface_id INT NOT NULL REFERENCES network_interface(id)
+    		network_interface_id INT REFERENCES network_interface(id)
     	);
     </sql>
     </changeSet>

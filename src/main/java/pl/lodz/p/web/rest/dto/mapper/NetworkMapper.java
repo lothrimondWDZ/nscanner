@@ -22,7 +22,7 @@ public class NetworkMapper {
 		}
 		result.setName(network.getName());
 		result.setBroadcast(network.getBroadcast());
-		result.setConnectedDevices(network.getConnectedDevices());
+		// result.setConnectedDevices(network.getConnectedDevices());
 		result.setMask(network.getMask());
 		result.setNetworkAddress(network.getNetworkAddress());
 		return result;
@@ -33,7 +33,7 @@ public class NetworkMapper {
 		result.setId(network.getId());
 		result.setName(network.getName());
 		result.setBroadcast(network.getBroadcast());
-		result.setConnectedDevices(network.getConnectedDevices());
+		// result.setConnectedDevices(network.getConnectedDevices());
 		result.setMask(network.getMask());
 		result.setNetworkAddress(network.getNetworkAddress());
 		return result;

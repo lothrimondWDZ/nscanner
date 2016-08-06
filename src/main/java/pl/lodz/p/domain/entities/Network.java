@@ -1,7 +1,5 @@
 package pl.lodz.p.domain.entities;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -32,10 +28,11 @@ public class Network {
 	@JoinColumn(name = "broadcast")
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private IPaddress broadcast;
-	@ManyToMany
-	@JoinTable(name = "device_device", joinColumns = @JoinColumn(name = "first_device_id"),
-			inverseJoinColumns = @JoinColumn(name = "second_device_id"))
-	private List<Device> connectedDevices;
+	// @ManyToMany
+	// @JoinTable(name = "device_device", joinColumns = @JoinColumn(name =
+	// "first_device_id"),
+	// inverseJoinColumns = @JoinColumn(name = "second_device_id"))
+	// private List<Device> connectedDevices;
 	@Column
 	private Integer mask;
 
@@ -71,13 +68,13 @@ public class Network {
 		this.broadcast = broadcast;
 	}
 
-	public List<Device> getConnectedDevices() {
-		return connectedDevices;
-	}
-
-	public void setConnectedDevices(List<Device> connectedDevices) {
-		this.connectedDevices = connectedDevices;
-	}
+	// public List<Device> getConnectedDevices() {
+	// return connectedDevices;
+	// }
+	//
+	// public void setConnectedDevices(List<Device> connectedDevices) {
+	// this.connectedDevices = connectedDevices;
+	// }
 
 	public Integer getMask() {
 		return mask;

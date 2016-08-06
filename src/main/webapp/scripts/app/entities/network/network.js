@@ -19,6 +19,8 @@ angular.module('nScannerApp')
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('network');
+                        $translatePartialLoader.addPart('ipaddress');
+                        $translatePartialLoader.addPart('iPAddressType');
                         $translatePartialLoader.addPart('global');
                         return $translate.refresh();
                     }]
@@ -40,6 +42,8 @@ angular.module('nScannerApp')
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('network');
+                        $translatePartialLoader.addPart('ipaddress');
+                        $translatePartialLoader.addPart('iPAddressType');
                         return $translate.refresh();
                     }],
                     entity: ['$stateParams', 'Network', function($stateParams, Network) {

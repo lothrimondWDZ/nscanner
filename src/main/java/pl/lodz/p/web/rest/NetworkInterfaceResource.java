@@ -53,6 +53,11 @@ public class NetworkInterfaceResource {
 			return ResponseEntity.badRequest().header("Failure", "A new networkInterface cannot already have an ID")
 					.body(null);
 		}
+		networkInterface.getAddresses().forEach(address -> {
+			if (address.getNetworkInterface() == null) {
+				address.setNetworkInterface(networkInterface);
+			}
+		});
 		NetworkInterface result = repository.save(networkInterface);
 		return ResponseEntity.created(new URI("/api/networkInterfaces/" + result.getId()))
 				.headers(HeaderUtil.createEntityCreationAlert("networkInterface", result.getId().toString()))
@@ -71,6 +76,11 @@ public class NetworkInterfaceResource {
 		if (networkInterface.getId() == null) {
 			return createNetworkInterface(networkInterface);
 		}
+		networkInterface.getAddresses().forEach(address -> {
+			if (address.getNetworkInterface() == null) {
+				address.setNetworkInterface(networkInterface);
+			}
+		});
 		NetworkInterface result = repository.save(networkInterface);
 		return ResponseEntity.ok()
 				.headers(HeaderUtil.createEntityUpdateAlert("networkInterface", networkInterface.getId().toString()))

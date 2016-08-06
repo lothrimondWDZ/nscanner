@@ -17,7 +17,10 @@
             },
             "name": "Name",
             "mask": "Mask",
-            "networkAddress": "NetworkAddress"
+            "networkAddress": "Network address",
+            "networkAddressType": "Network address type",
+            "broadcast": "Broadcast",
+            "broadcastType": "Broadcast type"
         }
     }
 }

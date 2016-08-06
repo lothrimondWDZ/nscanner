@@ -25,13 +25,29 @@
                     ng-model="network.mask"
                      />
         </div>
-
         <div class="form-group">
-            <label translate="nScannerApp.network.networkAddress" for="field_networkAddress">networkAddress</label>
-            <select class="form-control" id="field_networkAddress" name="networkAddress" ng-model="network.networkAddress" ng-options="iPaddress as iPaddress.id for iPaddress in networkaddresss | orderBy:'id' track by iPaddress.id">
-                <option value=""></option>
+            <label class="control-label" translate="nScannerApp.network.networkAddress" for="field_network_address">Network address</label>
+            <input type="text" class="form-control" name="address" id="field_network_address"
+                    ng-model="network.networkAddress.address"
+                     />
+            <label class="control-label" translate="nScannerApp.network.networkAddressType" for="field_network_type">Network address type</label>
+            <select class="form-control" name="type" ng-model="network.networkAddress.type" id="field_network_type">
+                <option value="IPv4" translate="nScannerApp.IPAddressType.IPv4">IPv4</option>
+                <option value="IPv6" translate="nScannerApp.IPAddressType.IPv6">IPv6</option>
             </select>
         </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.network.broadcast" for="field_broadcast_address">Broadcast address</label>
+            <input type="text" class="form-control" name="address" id="field_broadcast_address"
+                    ng-model="network.broadcast.address"
+                     />
+            <label class="control-label" translate="nScannerApp.network.broadcastType" for="field_broadcast_type">Broadcast address type</label>
+            <select class="form-control" name="type" ng-model="network.broadcast.type" id="field_broadcast_type">
+                <option value="IPv4" translate="nScannerApp.IPAddressType.IPv4">IPv4</option>
+                <option value="IPv6" translate="nScannerApp.IPAddressType.IPv6">IPv6</option>
+            </select>
+        </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">

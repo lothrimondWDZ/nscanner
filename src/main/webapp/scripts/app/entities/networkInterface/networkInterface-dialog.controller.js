@@ -11,6 +11,17 @@ angular.module('nScannerApp').controller('NetworkInterfaceDialogController',
             });
         };
 
+        $scope.addIPadd = function() {
+        	if($scope.networkInterface.addresses == undefined){
+        		$scope.networkInterface.addresses = [];
+        	}
+        	$scope.networkInterface.addresses.push({id: null, address: null, type: null});
+        };
+        
+        $scope.removeIPadd = function(index) {
+        	$scope.networkInterface.addresses.splice(index, 1);
+        }
+        
         var onSaveSuccess = function (result) {
             $scope.$emit('nScannerApp:networkInterfaceUpdate', result);
             $modalInstance.close(result);

@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class NetworkInterface {
 	@Column
 	@Enumerated(EnumType.STRING)
 	private NetworkInterfaceType type;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "networkInterface")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "networkInterface")
 	private List<IPaddress> addresses;
 	@ManyToMany
 	@JoinTable(name = "network_interface_vlan", joinColumns = @JoinColumn(name = "network_interface_id",

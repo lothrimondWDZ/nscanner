@@ -1,8 +1,8 @@
 {
     "nScannerApp": {
         "IPAddressType" : {
-            "null": "",
-            "asd": "asd"
+            "IPv4": "IPv4",
+            "IPv6": "IPv6"
         }
     }
 }
