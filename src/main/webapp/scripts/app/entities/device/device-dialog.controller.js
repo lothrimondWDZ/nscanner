@@ -1,13 +1,22 @@
 'use strict';
 
 angular.module('nScannerApp').controller('DeviceDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Device', 'TestScript',
-        function($scope, $stateParams, $modalInstance, entity, Device, TestScript) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Device', 'TestScript', 'NetworkInterface',
+        function($scope, $stateParams, $modalInstance, entity, Device, TestScript, NetworkInterface) {
 
         $scope.device = entity;
         $scope.load = function(id) {
             Device.get({id : id}, function(result) {
                 $scope.device = result;
+                if($scope.device.devices == undefined){
+            		$scope.device.devices = [];
+            	}
+                if($scope.device.testScripts == undefined){
+            		$scope.device.testScripts = [];
+            	}
+                if($scope.device.networkInterfaces == undefined){
+                	$scope.device.networkInterfaces = [];
+                }
             });
         };
         Device.query(function(result) {
@@ -15,6 +24,9 @@ angular.module('nScannerApp').controller('DeviceDialogController',
         });
         TestScript.query(function(result){
         	$scope.testScripts = result;
+        });
+        NetworkInterface.query(function(result){
+        	$scope.networkInterfaces = result;
         });
 
         var onSaveSuccess = function (result) {

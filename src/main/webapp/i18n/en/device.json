@@ -18,7 +18,8 @@
             "name": "Name",
             "description": "Description",
             "childDevices": "Child devices",
-            "testScripts": "Test scripts"
+            "testScripts": "Test scripts",
+            "networkInterfaces": "Network interfaces"
         }
     }
 }

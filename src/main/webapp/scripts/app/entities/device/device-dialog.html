@@ -33,6 +33,10 @@
             <label class="control-label" translate="nScannerApp.device.testScripts" for="field_scripts">Test scripts</label>
             <multiselect data-multiple="true" data-compare-by="id" ng-model="device.testScripts" options="script as ts.name for ts in testScripts" name="testScripts" id="field_scripts"></am-multiselect>
         </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.device.networkInterfaces" for="field_interfaces">Network interfaces</label>
+            <multiselect data-multiple="true" data-compare-by="id" ng-model="device.networkInterfaces" options="interface as int.name for int in networkInterfaces" name="interfaces" id="field_interfaces"></am-multiselect>
+        </div>
 
     </div>
     <div class="modal-footer">
