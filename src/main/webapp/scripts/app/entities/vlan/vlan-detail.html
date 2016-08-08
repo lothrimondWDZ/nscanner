@@ -42,6 +42,14 @@
                     <span ng-repeat="script in vlan.testScripts" class="form-control-static">{{script.name}}</span>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.vlan.networks">Networks</span>
+                </td>
+                <td>
+                    <span ng-repeat="network in vlan.networks" class="form-control-static">{{network.name}}</span>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

@@ -34,6 +34,10 @@
             <label class="control-label" translate="nScannerApp.vlan.testScripts" for="field_scripts">Test scripts</label>
             <multiselect data-multiple="true" data-compare-by="id" ng-model="vlan.testScripts" options="script as ts.name for ts in testScripts" name="testScripts" id="field_scripts"></am-multiselect>
         </div>
+        <div class="form-group">
+            <label class="control-label" translate="nScannerApp.vlan.networks" for="field_networks">Networks</label>
+            <multiselect data-multiple="true" data-compare-by="id" ng-model="vlan.networks" options="network as net.name for net in networks" name="networks" id="field_networks"></am-multiselect>
+        </div>
 
     </div>
     <div class="modal-footer">

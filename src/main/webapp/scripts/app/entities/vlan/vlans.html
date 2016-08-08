@@ -18,6 +18,9 @@
                     <th translate="global.field.id">ID</th>
                     <th translate="nScannerApp.vlan.number">Number</th>
                     <th translate="nScannerApp.vlan.type">Type</th>
+                    <th translate="nScannerApp.vlan.vlans">VLANs</th>
+                    <th translate="nScannerApp.vlan.testScripts">Test scripts</th>
+                    <th translate="nScannerApp.vlan.networks">Networks</th>
                     <th></th>
                 </tr>
             </thead>
@@ -26,6 +29,15 @@
                     <td><a ui-sref="vlan.detail({id:vlan.id})">{{vlan.id}}</a></td>
                     <td>{{vlan.number}}</td>
                     <td translate="{{'nScannerApp.VLANType.' + vlan.type}}">{{vlan.type}}</td>
+                    <td>
+                    	<a ng-repeat="v in vlan.vlans" ui-sref="vlan.detail({id:v.id})">{{v.number}}&nbsp;</a>
+                    </td>
+                    <td>
+                    	<a ng-repeat="script in vlan.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
+                    </td>
+                    <td>
+                    	<a ng-repeat="network in vlan.networks" ui-sref="network.detail({id:network.id})">{{network.name}}&nbsp;</a>
+                    </td>
                     <td>
                         <button type="submit"
                                 ui-sref="vlan.detail({id:vlan.id})"

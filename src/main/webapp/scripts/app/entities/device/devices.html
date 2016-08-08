@@ -20,6 +20,7 @@
                     <th translate="nScannerApp.device.description">Description</th>
                     <th translate="nScannerApp.device.childDevices">Child devices</th>
                     <th translate="nScannerApp.device.testScripts">Test scripts</th>
+                    <th translate="nScannerApp.device.networkInterfaces">Network interfaces</th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,6 +34,9 @@
                     </td>
                     <td>
                     	<a ng-repeat="script in device.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
+                    </td>
+                    <td>
+                    	<a ng-repeat="interface in device.networkInterfaces" ui-sref="networkInterface.detail({id:interface.id})">{{interface.name}}&nbsp;</a>
                     </td>
                     <td>
                         <button type="submit"
