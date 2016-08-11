@@ -9,13 +9,19 @@ import org.quartz.Scheduler;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
+import pl.lodz.p.config.AutowiringSpringBeanJobFactory;
 import pl.lodz.p.domain.entities.DynamicJob;
 import pl.lodz.p.domain.entities.Parameter;
 
 @Service
 public class DynamicJobService {
+
+	@Autowired
+	private ApplicationContext applicationContext;
 
 	public void schedule(DynamicJob dynamicJob) {
 		try {
@@ -28,12 +34,16 @@ public class DynamicJobService {
 				command.add(param.getValue());
 			}
 			job.getJobDataMap().put("command", command);
+			job.getJobDataMap().put("scriptId", dynamicJob.getScriptId());
 
 			Trigger trigger = TriggerBuilder.newTrigger()
 					.withIdentity(dynamicJob.getName().concat(" trigger"), "groupAll")
 					.withSchedule(CronScheduleBuilder.cronSchedule(dynamicJob.getCronExpression())).build();
 
 			Scheduler scheduler = new StdSchedulerFactory().getScheduler();
+			AutowiringSpringBeanJobFactory jobFactory = new AutowiringSpringBeanJobFactory();
+			jobFactory.setApplicationContext(applicationContext);
+			scheduler.setJobFactory(jobFactory);
 			scheduler.start();
 			scheduler.scheduleJob(job, trigger);
 
