@@ -3,7 +3,6 @@ package pl.lodz.p.domain.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,15 +26,15 @@ public class Device implements Testable {
 	private String name;
 	@Column
 	private String description;
-	@OneToMany(cascade = { CascadeType.PERSIST })
+	@OneToMany
 	@JoinTable(name = "network_interface_device", joinColumns = @JoinColumn(name = "device_id"),
 			inverseJoinColumns = @JoinColumn(name = "network_interface_id"))
 	private List<NetworkInterface> networkInterfaces;
-	@OneToMany(cascade = { CascadeType.PERSIST })
+	@OneToMany
 	@JoinTable(name = "device_device", joinColumns = @JoinColumn(name = "first_device_id"),
 			inverseJoinColumns = @JoinColumn(name = "second_device_id"))
 	private List<Device> devices;
-	@OneToMany(cascade = { CascadeType.PERSIST })
+	@OneToMany
 	@JoinTable(name = "test_script_device", joinColumns = @JoinColumn(name = "device_id"),
 			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
 	private List<TestScript> testScripts;

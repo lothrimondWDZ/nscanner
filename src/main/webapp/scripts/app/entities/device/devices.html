@@ -33,7 +33,7 @@
                     	<a ng-repeat="child in device.devices" ui-sref="device.detail({id:child.id})">{{child.name}}&nbsp;</a>
                     </td>
                     <td>
-                    	<a ng-repeat="script in device.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
+                    	<a ng-class="script.lastResult && script.lastResult != 0 ? 'failed-test' : ''" ng-repeat="script in device.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
                     </td>
                     <td>
                     	<a ng-repeat="interface in device.networkInterfaces" ui-sref="networkInterface.detail({id:interface.id})">{{interface.name}}&nbsp;</a>

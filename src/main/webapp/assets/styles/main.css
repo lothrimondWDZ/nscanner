@@ -198,3 +198,8 @@ ul#strengthBar {
     background-color: #eee;
     opacity: 1;
 }
+
+.failed-test {
+	color: red;
+	font-weight: bold;
+}

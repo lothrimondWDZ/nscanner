@@ -30,7 +30,7 @@
                     <td>{{networkService.description}}</td>
                     <td>{{networkService.port}}</td>
                     <td>
-                    	<a ng-repeat="script in networkService.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
+                    	<a ng-class="script.lastResult && script.lastResult != 0 ? 'failed-test' : ''" ng-repeat="script in networkService.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
                     </td>
                     <td>
                         <button type="submit"

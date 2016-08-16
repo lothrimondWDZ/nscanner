@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -25,8 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pl.lodz.p.domain.entities.Device;
 import pl.lodz.p.repository.DeviceRepository;
-import pl.lodz.p.web.rest.dto.DeviceDto;
-import pl.lodz.p.web.rest.dto.mapper.DeviceMapper;
 import pl.lodz.p.web.rest.util.HeaderUtil;
 import pl.lodz.p.web.rest.util.PaginationUtil;
 
@@ -44,20 +41,17 @@ public class DeviceResource {
 	@Inject
 	private DeviceRepository deviceRepository;
 
-	@Autowired
-	private DeviceMapper mapper;
-
 	/**
 	 * POST /devices -> Create a new device.
 	 */
 	@RequestMapping(value = "/devices", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
-	public ResponseEntity<Device> createDevice(@RequestBody DeviceDto device) throws URISyntaxException {
+	public ResponseEntity<Device> createDevice(@RequestBody Device device) throws URISyntaxException {
 		log.debug("REST request to save Device : {}", device);
 		if (device.getId() != null) {
 			return ResponseEntity.badRequest().header("Failure", "A new device cannot already have an ID").body(null);
 		}
-		Device result = deviceRepository.save(mapper.map(device));
+		Device result = deviceRepository.save(device);
 		return ResponseEntity.created(new URI("/api/devices/" + result.getId()))
 				.headers(HeaderUtil.createEntityCreationAlert("device", result.getId().toString())).body(result);
 	}
@@ -70,7 +64,7 @@ public class DeviceResource {
 	public ResponseEntity<Device> updateDevice(@RequestBody Device device) throws URISyntaxException {
 		log.debug("REST request to update Device : {}", device);
 		if (device.getId() == null) {
-			return createDevice(mapper.map(device));
+			return createDevice(device);
 		}
 		Device result = deviceRepository.save(device);
 		return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert("device", device.getId().toString()))
