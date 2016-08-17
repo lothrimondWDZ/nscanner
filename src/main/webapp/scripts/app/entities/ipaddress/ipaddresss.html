@@ -1,10 +1,10 @@
 <div>
-    <h2 translate="nScannerApp.ipaddress.home.title">IPaddresss</h2>
+    <h2 translate="nScannerApp.ipaddress.home.title">IPaddress</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary" ui-sref="ipaddress.new">
+                <button has-authority="ROLE_ADMIN" class="btn btn-primary" ui-sref="ipaddress.new">
                     <span class="glyphicon glyphicon-flash"></span> <span translate="nScannerApp.ipaddress.home.createLabel">Create a new IPaddress</span>
                 </button>
             </div>
@@ -32,12 +32,12 @@
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
-                        <button type="submit"
+                        <button has-authority="ROLE_ADMIN" type="submit"
                                 ui-sref="ipaddress.edit({id:ipaddress.id})"
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
-                        <button type="submit"
+                        <button has-authority="ROLE_ADMIN" type="submit"
                                 ui-sref="ipaddress.delete({id:ipaddress.id})"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>

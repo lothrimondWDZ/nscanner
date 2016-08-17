@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary" ui-sref="networkService.new">
+                <button has-authority="ROLE_ADMIN" class="btn btn-primary" ui-sref="networkService.new">
                     <span class="glyphicon glyphicon-flash"></span> <span translate="nScannerApp.networkService.home.createLabel">Create a new NetworkService</span>
                 </button>
             </div>
@@ -17,7 +17,7 @@
                 <tr>
                     <th translate="global.field.id">ID</th>
                     <th translate="nScannerApp.networkService.name">Name</th>
-                    <th translate="nScannerApp.networkService.description">Description</th>
+                    <th has-authority="ROLE_ADMIN" translate="nScannerApp.networkService.description">Description</th>
                     <th translate="nScannerApp.networkService.port">Port</th>
                     <th translate="nScannerApp.networkService.testScripts">Test scripts</th>
                     <th></th>
@@ -27,7 +27,7 @@
                 <tr ng-repeat="networkService in networkServices track by networkService.id">
                     <td><a ui-sref="networkService.detail({id:networkService.id})">{{networkService.id}}</a></td>
                     <td>{{networkService.name}}</td>
-                    <td>{{networkService.description}}</td>
+                    <td has-authority="ROLE_ADMIN">{{networkService.description}}</td>
                     <td>{{networkService.port}}</td>
                     <td>
                     	<a ng-class="script.lastResult && script.lastResult != 0 ? 'failed-test' : ''" ng-repeat="script in networkService.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
@@ -38,12 +38,12 @@
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
-                        <button type="submit"
+                        <button has-authority="ROLE_ADMIN" type="submit"
                                 ui-sref="networkService.edit({id:networkService.id})"
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
-                        <button type="submit"
+                        <button has-authority="ROLE_ADMIN" type="submit"
                                 ui-sref="networkService.delete({id:networkService.id})"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>

@@ -2,7 +2,7 @@
     "nScannerApp": {
         "ipaddress" : {
             "home": {
-                "title": "IPaddresss",
+                "title": "IPaddress",
                 "createLabel": "Create a new IPaddress",
                 "createOrEditLabel": "Create or edit a IPaddress"
             },
