@@ -2,18 +2,18 @@
     "nScannerApp": {
         "networkInterface" : {
             "home": {
-                "title": "NetworkInterfaces",
-                "createLabel": "Create a new NetworkInterface",
-                "createOrEditLabel": "Create or edit a NetworkInterface"
+                "title": "Network interfaces",
+                "createLabel": "Create a new Network interface",
+                "createOrEditLabel": "Create or edit a Network interface"
             },
-            "created": "A new NetworkInterface is created with identifier {{ param }}",
-            "updated": "A NetworkInterface is updated with identifier {{ param }}",
-            "deleted": "A NetworkInterface is deleted with identifier {{ param }}",
+            "created": "A new Network interface is created with identifier {{ param }}",
+            "updated": "A Network interface is updated with identifier {{ param }}",
+            "deleted": "A Network interface is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete NetworkInterface {{ id }}?"
+                "question": "Are you sure you want to delete Network interface {{ id }}?"
             },
             "detail": {
-                "title": "NetworkInterface"
+                "title": "Network interface"
             },
             "name": "Name",
             "description": "Description",

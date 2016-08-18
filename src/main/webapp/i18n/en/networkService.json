@@ -2,23 +2,24 @@
     "nScannerApp": {
         "networkService" : {
             "home": {
-                "title": "NetworkServices",
-                "createLabel": "Create a new NetworkService",
-                "createOrEditLabel": "Create or edit a NetworkService"
+                "title": "Network services",
+                "createLabel": "Create a new Network service",
+                "createOrEditLabel": "Create or edit a Network service"
             },
-            "created": "A new NetworkService is created with identifier {{ param }}",
-            "updated": "A NetworkService is updated with identifier {{ param }}",
-            "deleted": "A NetworkService is deleted with identifier {{ param }}",
+            "created": "A new Network service is created with identifier {{ param }}",
+            "updated": "A Network service is updated with identifier {{ param }}",
+            "deleted": "A Network service is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete NetworkService {{ id }}?"
+                "question": "Are you sure you want to delete Network service {{ id }}?"
             },
             "detail": {
-                "title": "NetworkService"
+                "title": "Network service"
             },
             "name": "Name",
             "description": "Description",
             "port": "Port",
-            "testScripts": "Test scripts"
+            "testScripts": "Test scripts",
+            "networkInterface": "Network interface"
         }
     }
 }

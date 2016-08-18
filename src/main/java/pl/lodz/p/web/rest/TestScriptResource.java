@@ -57,11 +57,13 @@ public class TestScriptResource {
 			return ResponseEntity.badRequest().header("Failure", "A new testScripts cannot already have an ID")
 					.body(null);
 		}
-		testScripts.getParameters().forEach(param -> {
-			if (param.getTestScript() == null) {
-				param.setTestScript(testScripts);
-			}
-		});
+		if (testScripts.getParameters() != null) {
+			testScripts.getParameters().forEach(param -> {
+				if (param.getTestScript() == null) {
+					param.setTestScript(testScripts);
+				}
+			});
+		}
 		TestScript result = repository.save(testScripts);
 		service.schedule(new DynamicJob(testScripts));
 		return ResponseEntity.created(new URI("/api/testScripts/" + result.getId()))
@@ -78,11 +80,13 @@ public class TestScriptResource {
 		if (testScripts.getId() == null) {
 			return createTestScript(testScripts);
 		}
-		testScripts.getParameters().forEach(param -> {
-			if (param.getTestScript() == null) {
-				param.setTestScript(testScripts);
-			}
-		});
+		if (testScripts.getParameters() != null) {
+			testScripts.getParameters().forEach(param -> {
+				if (param.getTestScript() == null) {
+					param.setTestScript(testScripts);
+				}
+			});
+		}
 		TestScript result = repository.save(testScripts);
 		return ResponseEntity.ok()
 				.headers(HeaderUtil.createEntityUpdateAlert("testScripts", testScripts.getId().toString()))

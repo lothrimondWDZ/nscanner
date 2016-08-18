@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span translate="nScannerApp.device.detail.title">Device</span> {{device.id}}</h2>
+    <h2>{{device.name}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -31,7 +31,7 @@
                     <span translate="nScannerApp.device.childDevices">Child devices</span>
                 </td>
                 <td>
-                    <span ng-repeat="child in device.devices" class="form-control-static">{{child.name}}&nbsp;</span>
+                    <a ng-repeat="child in device.devices" ui-sref="device.detail({id:child.id})">{{child.name}}&nbsp;</a>
                 </td>
             </tr>
             <tr>
@@ -39,7 +39,7 @@
                     <span translate="nScannerApp.device.testScripts">Test scripts</span>
                 </td>
                 <td>
-                    <span ng-repeat="script in device.testScripts" class="form-control-static">{{script.name}}&nbsp;</span>
+                    <a ng-class="script.lastResult && script.lastResult != 0 ? 'failed-test' : ''" ng-repeat="script in device.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
                 </td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
                     <span translate="nScannerApp.device.networkInterfaces">Network interfaces</span>
                 </td>
                 <td>
-                    <span ng-repeat="interface in device.networkInterfaces" class="form-control-static">{{interface.name}}&nbsp;</span>
+                    <a ng-repeat="interface in device.networkInterfaces" ui-sref="networkInterface.detail({id:interface.id})">{{interface.name}}&nbsp;</a>
                 </td>
             </tr>
             </tbody>

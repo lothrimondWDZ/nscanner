@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span translate="nScannerApp.networkService.detail.title">NetworkService</span> {{networkService.id}}</h2>
+    <h2>{{networkService.name}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -32,6 +32,22 @@
                 </td>
                 <td>
                     <span class="form-control-static">{{networkService.port}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.networkService.testScripts">Test scripts</span>
+                </td>
+                <td>
+                    <a ng-class="script.lastResult && script.lastResult != 0 ? 'failed-test' : ''" ng-repeat="script in networkService.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.networkService.networkInterface">Network Interface</span>
+                </td>
+                <td>
+                    <a ui-sref="networkInterface.detail({id:networkService.networkInterface.id})">{{networkService.networkInterface.name}}&nbsp;</a>
                 </td>
             </tr>
             </tbody>

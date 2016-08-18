@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,20 +30,20 @@ public class VLAN implements Testable {
 	@Column
 	@Enumerated(EnumType.STRING)
 	private VLANType type;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "test_script_vlan", joinColumns = @JoinColumn(name = "vlan_id"),
 			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
 	private List<TestScript> testScripts;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "network_interface_vlan",
 			joinColumns = @JoinColumn(name = "vlan_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(
 					name = "network_interface_id", referencedColumnName = "id"))
 	private List<NetworkInterface> networkInterfaces;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "vlan_vlan", joinColumns = @JoinColumn(name = "first_vlan_id"), inverseJoinColumns = @JoinColumn(
 			name = "second_vlan_id"))
 	private List<VLAN> vlans;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "vlan_network", joinColumns = @JoinColumn(name = "vlan_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "network_id", referencedColumnName = "id"))
 	private List<Network> networks;

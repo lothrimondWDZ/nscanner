@@ -19,6 +19,7 @@
                     <th translate="nScannerApp.networkService.name">Name</th>
                     <th has-authority="ROLE_ADMIN" translate="nScannerApp.networkService.description">Description</th>
                     <th translate="nScannerApp.networkService.port">Port</th>
+                    <th translate="nScannerApp.networkService.networkInterface">Network interface</th>
                     <th translate="nScannerApp.networkService.testScripts">Test scripts</th>
                     <th></th>
                 </tr>
@@ -29,6 +30,9 @@
                     <td>{{networkService.name}}</td>
                     <td has-authority="ROLE_ADMIN">{{networkService.description}}</td>
                     <td>{{networkService.port}}</td>
+                    <td>
+                    	<a ui-sref="networkInterface.detail({id:networkService.networkInterface.id})">{{networkService.networkInterface.name}}&nbsp;</a>
+                    </td>
                     <td>
                     	<a ng-class="script.lastResult && script.lastResult != 0 ? 'failed-test' : ''" ng-repeat="script in networkService.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
                     </td>

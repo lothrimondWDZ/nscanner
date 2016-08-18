@@ -126,7 +126,7 @@
     <changeSet id="create NETWORK_INTERFACE_VLAN table" author="ikucharski">
     <sql splitStatements="false">
     	CREATE TABLE network_interface_vlan(
-    		netwotk_interface_id INT NOT NULL REFERENCES network_interface(id),
+    		network_interface_id INT NOT NULL REFERENCES network_interface(id),
     		vlan_id INT NOT NULL REFERENCES vlan(id)
     	);
     </sql>

@@ -2,22 +2,22 @@
     "nScannerApp": {
         "testScript" : {
             "home": {
-                "title": "TestScripts",
-                "createLabel": "Create a new TestScript",
-                "createOrEditLabel": "Create or edit a TestScript"
+                "title": "Test scripts",
+                "createLabel": "Create a new Test script",
+                "createOrEditLabel": "Create or edit a Test script"
             },
-            "created": "A new TestScript is created with identifier {{ param }}",
-            "updated": "A TestScript is updated with identifier {{ param }}",
-            "deleted": "A TestScript is deleted with identifier {{ param }}",
+            "created": "A new Test script is created with identifier {{ param }}",
+            "updated": "A Test script is updated with identifier {{ param }}",
+            "deleted": "A Test script is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete TestScript {{ id }}?"
+                "question": "Are you sure you want to delete Test script {{ id }}?"
             },
             "detail": {
-                "title": "TestScript"
+                "title": "Test script"
             },
             "name": "Name",
             "description": "Description",
-            "cronExpression": "CronExpression",
+            "cronExpression": "Cron expression",
             "path": "Path",
             "parameter": "Parameter",
             "parameters": "Parameters",

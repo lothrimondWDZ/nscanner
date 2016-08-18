@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span translate="nScannerApp.vlan.detail.title">VLAN</span> {{vlan.id}}</h2>
+    <h2><span translate="nScannerApp.vlan.detail.title">VLAN</span> {{vlan.number}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -31,7 +31,7 @@
                     <span translate="nScannerApp.vlan.vlans">Child VLANs</span>
                 </td>
                 <td>
-                    <span ng-repeat="child in vlan.vlans" class="form-control-static">{{child.number}}</span>
+                    <a ng-repeat="child in vlan.vlans" ui-sref="vlan.detail({id:child.id})" class="form-control-static">{{child.number}}</a>
                 </td>
             </tr>
             <tr>
@@ -39,7 +39,7 @@
                     <span translate="nScannerApp.vlan.testScripts">Test scripts</span>
                 </td>
                 <td>
-                    <span ng-repeat="script in vlan.testScripts" class="form-control-static">{{script.name}}</span>
+                	<a ng-class="script.lastResult && script.lastResult != 0 ? 'failed-test' : ''" ng-repeat="script in vlan.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
                 </td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
                     <span translate="nScannerApp.vlan.networks">Networks</span>
                 </td>
                 <td>
-                    <span ng-repeat="network in vlan.networks" class="form-control-static">{{network.name}}</span>
+                    <a ng-repeat="network in vlan.networks" ui-sref="network.detail({id:network.id})" class="form-control-static">{{network.name}}</a>
                 </td>
             </tr>
             </tbody>

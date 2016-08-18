@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span translate="nScannerApp.network.detail.title">Network</span> {{network.id}}</h2>
+    <h2>{{network.name}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -28,10 +28,18 @@
             </tr>
             <tr>
                 <td>
-                    <span translate="nScannerApp.network.networkAddress">networkAddress</span>
+                    <span translate="nScannerApp.network.networkAddress">Network address</span>
                 </td>
                 <td>
-                    <a class="form-control-static" ui-sref="iPaddress.detail({id:network.networkAddress.id})">{{network.networkAddress.id}}</a>
+                    <a class="form-control-static" ui-sref="iPaddress.detail({id:network.networkAddress.id})">{{network.networkAddress.address}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.network.broadcast">Broadcast</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="iPaddress.detail({id:network.broadcast.id})">{{network.broadcast.address}}</a>
                 </td>
             </tr>
             </tbody>

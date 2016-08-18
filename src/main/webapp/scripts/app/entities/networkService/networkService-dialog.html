@@ -32,6 +32,11 @@
                      />
         </div>
         <div class="form-group">
+            <label class="control-label" translate="nScannerApp.networkService.networkInterface" for="field_interface">Network interface</label>
+            <select class="form-control" name="networkInterface" ng-model="networkService.networkInterface" ng-options="interface as interface.name for interface in interfaces" id="field_interface">
+            </select>
+        </div>
+        <div class="form-group">
             <label class="control-label" translate="nScannerApp.networkService.testScripts" for="field_scripts">Test scripts</label>
             <multiselect data-multiple="true" data-compare-by="id" ng-model="networkService.testScripts" options="script as ts.name for ts in testScripts" name="testScripts" id="field_scripts"></am-multiselect>
         </div>

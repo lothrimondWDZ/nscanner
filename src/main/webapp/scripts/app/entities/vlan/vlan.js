@@ -65,7 +65,10 @@ angular.module('nScannerApp')
                                 return {
                                     number: null,
                                     type: null,
-                                    id: null
+                                    id: null,
+                                    networks: [],
+                                    vlans: [],
+                                    testScripts: []
                                 };
                             }
                         }
