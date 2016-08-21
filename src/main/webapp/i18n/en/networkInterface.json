@@ -18,6 +18,7 @@
             "name": "Name",
             "description": "Description",
             "type": "Type",
+            "ipAddresses": "Addresses",
             "addIPaddress": "Add IP address"
         }
     }

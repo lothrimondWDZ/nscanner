@@ -26,7 +26,7 @@
             <tbody>
                 <tr ng-repeat="testScript in testScripts track by testScript.id">
                     <td><a ui-sref="testScript.detail({id:testScript.id})">{{testScript.id}}</a></td>
-                    <td>{{testScript.name}}</td>
+                    <td ng-class="testScript.lastResult && testScript.lastResult != 0 ? 'failed-test' : ''">{{testScript.name}}</td>
                     <td>{{testScript.description}}</td>
                     <td>{{testScript.cronExpression}}</td>
                     <td>{{testScript.path}}</td>

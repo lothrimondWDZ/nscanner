@@ -34,6 +34,14 @@
                     <span class="form-control-static" translate="{{'nScannerApp.NetworkInterfaceType.' + networkInterface.type}}">{{networkInterface.type}}</span>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.networkInterface.ipAddresses">Addresses</span>
+                </td>
+                <td>
+                    <span ng-repeat="address in networkInterface.addresses" class="form-control-static">{{address.address}}&#13;&#10;</span>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
