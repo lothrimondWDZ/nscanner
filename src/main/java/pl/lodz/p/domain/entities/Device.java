@@ -15,8 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "device")
 public class Device implements Testable {
@@ -34,7 +32,6 @@ public class Device implements Testable {
 			inverseJoinColumns = @JoinColumn(name = "network_interface_id"))
 	private List<NetworkInterface> networkInterfaces;
 	@OneToMany(fetch = FetchType.EAGER)
-	@JsonManagedReference
 	@JoinTable(name = "device_device", joinColumns = @JoinColumn(name = "first_device_id"),
 			inverseJoinColumns = @JoinColumn(name = "second_device_id"))
 	private List<Device> devices;
