@@ -17,7 +17,13 @@ angular.module('nScannerApp')
         };
         $scope.loadAll();
 
-
+        $scope.compareDate = function(date){
+        	if(date) {
+        		return (new Date(date)).getTime() < (new Date()).getTime();
+        	}
+        	return false;
+        };
+        
         $scope.refresh = function () {
             $scope.loadAll();
             $scope.clear();

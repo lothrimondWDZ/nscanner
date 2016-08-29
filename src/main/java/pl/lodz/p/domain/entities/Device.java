@@ -1,5 +1,6 @@
 package pl.lodz.p.domain.entities;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 @Entity
 @Table(name = "device")
 public class Device implements Testable {
@@ -25,6 +31,10 @@ public class Device implements Testable {
 	private Long id;
 	@Column
 	private String name;
+	@Column(name = "expiration_date")
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	private LocalDateTime expirationDate;
 	@Column
 	private String description;
 	@OneToMany(fetch = FetchType.EAGER)
@@ -59,6 +69,14 @@ public class Device implements Testable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public LocalDateTime getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(LocalDateTime expirationDate) {
+		this.expirationDate = expirationDate;
 	}
 
 	public String getDescription() {

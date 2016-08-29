@@ -63,6 +63,7 @@ angular.module('nScannerApp')
                                 return {
                                     name: null,
                                     description: null,
+                                    expirationDate: null,
                                     id: null,
                                     devices: [],
                                     testScripts: []

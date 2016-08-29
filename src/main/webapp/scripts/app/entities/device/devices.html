@@ -18,6 +18,7 @@
                     <th translate="global.field.id">ID</th>
                     <th translate="nScannerApp.device.name">Name</th>
                     <th has-authority="ROLE_ADMIN" translate="nScannerApp.device.description">Description</th>
+                    <th translate="nScannerApp.device.expirationDate">Expiration date</th>
                     <th translate="nScannerApp.device.childDevices">Child devices</th>
                     <th translate="nScannerApp.device.testScripts">Test scripts</th>
                     <th translate="nScannerApp.device.networkInterfaces">Network interfaces</th>
@@ -29,6 +30,7 @@
                     <td><a ui-sref="device.detail({id:device.id})">{{device.id}}</a></td>
                     <td>{{device.name}}</td>
                     <td has-authority="ROLE_ADMIN">{{device.description}}</td>
+                    <td ng-class="compareDate(device.expirationDate) ? 'failed-test' : ''">{{device.expirationDate | date:'dd-MM-yyyy HH:mm:ss'}}</td>
                     <td>
                     	<a ng-repeat="child in device.devices" ui-sref="device.detail({id:child.id})">{{child.name}}&nbsp;</a>
                     </td>

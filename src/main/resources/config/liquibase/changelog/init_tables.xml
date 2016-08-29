@@ -20,6 +20,7 @@
     <sql splitStatements="false">
     	CREATE TABLE device(
     		id INT NOT NULL PRIMARY KEY,
+    		expiration_date TIMESTAMP,
     		name VARCHAR(100) NOT NULL,
     		description VARCHAR(255) NOT NULL
     	);

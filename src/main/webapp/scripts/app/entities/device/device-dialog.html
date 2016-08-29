@@ -26,6 +26,17 @@
                      />
         </div>
         <div class="form-group">
+            <label class="control-label" translate="nScannerApp.device.expirationDate" for="field_expirationDate">Expiration date</label>
+            <div class="dropdown">
+	            <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+	    			<div class="input-group"><input type="text" name="expirationDate" id="field_expirationDate" class="form-control" data-ng-model="device.expirationDate"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span></div>
+	  			</a>
+	  			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+	    			<datetimepicker data-ng-model="device.expirationDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+	  			</ul>
+	  		</div>
+        </div>
+        <div class="form-group">
             <label class="control-label" translate="nScannerApp.device.childDevices" for="field_devices">Child devices</label>
             <multiselect data-multiple="true" data-compare-by="id" ng-model="device.devices" options="child as d.name for d in devices" name="devices" id="field_devices"></am-multiselect>
         </div>

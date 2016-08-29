@@ -17,6 +17,7 @@
             },
             "name": "Name",
             "description": "Description",
+            "expirationDate": "Expiration date",
             "childDevices": "Child devices",
             "testScripts": "Test scripts",
             "networkInterfaces": "Network interfaces"

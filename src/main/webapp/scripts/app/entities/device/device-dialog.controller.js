@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('nScannerApp').controller('DeviceDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Device', 'TestScript', 'NetworkInterface',
-        function($scope, $stateParams, $modalInstance, entity, Device, TestScript, NetworkInterface) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Device', 'TestScript', 'NetworkInterface', '$filter',
+        function($scope, $stateParams, $modalInstance, entity, Device, TestScript, NetworkInterface, $filter) {
 
         $scope.device = entity;
         $scope.load = function(id) {
@@ -27,6 +27,10 @@ angular.module('nScannerApp').controller('DeviceDialogController',
         });
         NetworkInterface.query(function(result){
         	$scope.networkInterfaces = result;
+        });
+        
+        $scope.$watch('device.expirationDate', function (newValue) {
+            $scope.device.expirationDate = $filter('date')(newValue, 'dd-MM-yyyy HH:mm:ss'); 
         });
 
         var onSaveSuccess = function (result) {

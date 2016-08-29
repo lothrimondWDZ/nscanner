@@ -2,6 +2,7 @@
 
 angular.module('nScannerApp')
     .controller('DeviceDetailController', function ($scope, $rootScope, $stateParams, entity, Device) {
+    	$scope.currentDate = new Date();
         $scope.device = entity;
         $scope.load = function (id) {
             Device.get({id: id}, function(result) {

@@ -28,6 +28,14 @@
             </tr>
             <tr>
                 <td>
+                    <span translate="nScannerApp.device.expirationDate">Expiration date</span>
+                </td>
+                <td>
+                    <span ng-class="device.expirationDate > currentDate ? 'failed-test' : 'form-control-static'">{{device.expirationDate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <span translate="nScannerApp.device.childDevices">Child devices</span>
                 </td>
                 <td>
