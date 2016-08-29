@@ -15,6 +15,7 @@
             "detail": {
                 "title": "VLAN"
             },
+            "name": "Name",
             "number": "Number",
             "type": "Type",
             "vlans": "Child VLANs",

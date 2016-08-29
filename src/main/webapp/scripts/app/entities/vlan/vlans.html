@@ -16,6 +16,7 @@
             <thead>
                 <tr>
                     <th translate="global.field.id">ID</th>
+                    <th translate="nScannerApp.vlan.name">Name</th>
                     <th translate="nScannerApp.vlan.number">Number</th>
                     <th translate="nScannerApp.vlan.type">Type</th>
                     <th translate="nScannerApp.vlan.vlans">VLANs</th>
@@ -27,6 +28,7 @@
             <tbody>
                 <tr ng-repeat="vlan in vlans track by vlan.id">
                     <td><a ui-sref="vlan.detail({id:vlan.id})">{{vlan.id}}</a></td>
+                    <td>{{vlan.name}}</td>
                     <td>{{vlan.number}}</td>
                     <td translate="{{'nScannerApp.VLANType.' + vlan.type}}">{{vlan.type}}</td>
                     <td>

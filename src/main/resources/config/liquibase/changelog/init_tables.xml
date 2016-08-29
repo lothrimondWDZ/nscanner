@@ -30,6 +30,7 @@
     <sql splitStatements="false">
     	CREATE TABLE vlan(
     		id INT NOT NULL PRIMARY KEY,
+    		name VARCHAR(255) NOT NULL,
     		number INT NOT NULL,
     		type VARCHAR(20) NOT NULL CHECK(type IN('QinQ','VXLAN'))
     	);

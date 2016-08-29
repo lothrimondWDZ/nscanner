@@ -26,6 +26,8 @@ public class VLAN implements Testable {
 	@SequenceGenerator(name = "vlan_seq_gen", sequenceName = "vlan_seq")
 	private Long id;
 	@Column
+	private String name;
+	@Column
 	private Integer number;
 	@Column
 	@Enumerated(EnumType.STRING)
@@ -54,6 +56,14 @@ public class VLAN implements Testable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Integer getNumber() {
