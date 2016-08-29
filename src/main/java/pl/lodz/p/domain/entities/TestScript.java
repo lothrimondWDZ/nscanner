@@ -1,5 +1,6 @@
 package pl.lodz.p.domain.entities;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 @Entity
 @Table(name = "test_script")
@@ -33,6 +39,10 @@ public class TestScript {
 	private List<Parameter> parameters;
 	@Column(name = "last_result")
 	private Integer lastResult;
+	@Column(name = "last_execution")
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	private LocalDateTime lastExecution;
 
 	public Long getId() {
 		return id;
@@ -88,6 +98,14 @@ public class TestScript {
 
 	public void setLastResult(Integer lastResult) {
 		this.lastResult = lastResult;
+	}
+
+	public LocalDateTime getLastExecution() {
+		return lastExecution;
+	}
+
+	public void setLastExecution(LocalDateTime lastExecution) {
+		this.lastExecution = lastExecution;
 	}
 
 }

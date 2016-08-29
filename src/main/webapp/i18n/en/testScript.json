@@ -17,6 +17,7 @@
             },
             "name": "Name",
             "description": "Description",
+            "lastExecution": "Last execution",
             "cronExpression": "Cron expression",
             "path": "Path",
             "parameter": "Parameter",

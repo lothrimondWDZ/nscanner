@@ -18,6 +18,7 @@
                     <th translate="global.field.id">ID</th>
                     <th translate="nScannerApp.testScript.name">Name</th>
                     <th translate="nScannerApp.testScript.description">Description</th>
+                    <th translate="nScannerApp.testScript.lastExecution">Last execution</th>
                     <th translate="nScannerApp.testScript.cronExpression">CronExpression</th>
                     <th translate="nScannerApp.testScript.path">Path</th>
                     <th></th>
@@ -28,6 +29,7 @@
                     <td><a ui-sref="testScript.detail({id:testScript.id})">{{testScript.id}}</a></td>
                     <td ng-class="testScript.lastResult && testScript.lastResult != 0 ? 'failed-test' : ''">{{testScript.name}}</td>
                     <td>{{testScript.description}}</td>
+                    <td>{{testScript.lastExecution | date:'dd-MM-yyyy HH:mm:ss'}}</td>
                     <td>{{testScript.cronExpression}}</td>
                     <td>{{testScript.path}}</td>
                     <td>

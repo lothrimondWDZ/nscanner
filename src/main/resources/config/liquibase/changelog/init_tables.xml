@@ -69,7 +69,8 @@
     		description VARCHAR(255) NOT NULL,
     		cron_expression VARCHAR(50) NOT NULL,
     		path VARCHAR(255) NOT NULL,
-    		last_result INT
+    		last_result INT,
+    		last_execution TIMESTAMP
     	);
     </sql>
     </changeSet>
