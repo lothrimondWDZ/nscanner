@@ -19,8 +19,7 @@
             "mask": "Mask",
             "networkAddress": "Network address",
             "networkAddressType": "Network address type",
-            "broadcast": "Broadcast",
-            "broadcastType": "Broadcast type"
+            "testScripts": "Test scripts"
         }
     }
 }

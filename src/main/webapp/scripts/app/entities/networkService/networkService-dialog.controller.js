@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('nScannerApp').controller('NetworkServiceDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'NetworkService', 'TestScript', 'NetworkInterface',
-        function($scope, $stateParams, $modalInstance, entity, NetworkService, TestScript, NetworkInterface) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'NetworkService', 'TestScript', 'Device',
+        function($scope, $stateParams, $modalInstance, entity, NetworkService, TestScript, Device) {
 
         $scope.networkService = entity;
         $scope.load = function(id) {
@@ -13,8 +13,8 @@ angular.module('nScannerApp').controller('NetworkServiceDialogController',
         TestScript.query(function(result){
         	$scope.testScripts = result;
         });
-        NetworkInterface.query(function(result){
-        	$scope.interfaces = result;
+        Device.query(function(result){
+        	$scope.devices = result;
         });
 
 

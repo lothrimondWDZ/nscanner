@@ -20,6 +20,7 @@
             "lastExecution": "Last execution",
             "cronExpression": "Cron expression",
             "path": "Path",
+            "lastOutput": "Last output",
             "parameter": "Parameter",
             "parameters": "Parameters",
             "parameterIndex": "Parameter{{index}}",

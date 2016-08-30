@@ -30,8 +30,8 @@ public class NetworkService implements Testable {
 	@Column
 	private Integer port;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "network_interface_id")
-	private NetworkInterface networkInterface;
+	@JoinColumn(name = "device_id")
+	private Device device;
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "test_script_network_service", joinColumns = @JoinColumn(name = "network_service_id"),
 			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
@@ -69,12 +69,12 @@ public class NetworkService implements Testable {
 		this.port = port;
 	}
 
-	public NetworkInterface getNetworkInterface() {
-		return networkInterface;
+	public Device getDevice() {
+		return device;
 	}
 
-	public void setNetworkInterface(NetworkInterface networkInterface) {
-		this.networkInterface = networkInterface;
+	public void setDevice(Device device) {
+		this.device = device;
 	}
 
 	public List<TestScript> getTestScripts() {

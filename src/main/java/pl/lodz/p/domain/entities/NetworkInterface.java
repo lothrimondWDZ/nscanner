@@ -40,8 +40,6 @@ public class NetworkInterface {
 			referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "vlan_id",
 			referencedColumnName = "id"))
 	private List<VLAN> vlans;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "networkInterface")
-	private List<NetworkService> networkServices;
 
 	public Long getId() {
 		return id;
@@ -89,14 +87,6 @@ public class NetworkInterface {
 
 	public void setVlans(List<VLAN> vlans) {
 		this.vlans = vlans;
-	}
-
-	public List<NetworkService> getNetworkServices() {
-		return networkServices;
-	}
-
-	public void setNetworkServices(List<NetworkService> networkServices) {
-		this.networkServices = networkServices;
 	}
 
 }

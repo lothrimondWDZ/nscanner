@@ -19,7 +19,7 @@
             "description": "Description",
             "port": "Port",
             "testScripts": "Test scripts",
-            "networkInterface": "Network interface"
+            "device": "Device"
         }
     }
 }

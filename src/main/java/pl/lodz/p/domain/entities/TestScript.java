@@ -43,6 +43,8 @@ public class TestScript {
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	private LocalDateTime lastExecution;
+	@Column(name = "last_output")
+	private String lastOutput;
 
 	public Long getId() {
 		return id;
@@ -106,6 +108,14 @@ public class TestScript {
 
 	public void setLastExecution(LocalDateTime lastExecution) {
 		this.lastExecution = lastExecution;
+	}
+
+	public String getLastOutput() {
+		return lastOutput;
+	}
+
+	public void setLastOutput(String lastOutput) {
+		this.lastOutput = lastOutput;
 	}
 
 }

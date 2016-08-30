@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,6 +50,8 @@ public class Device implements Testable {
 	@JoinTable(name = "test_script_device", joinColumns = @JoinColumn(name = "device_id"),
 			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
 	private List<TestScript> testScripts;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
+	private List<NetworkService> networkServices;
 
 	public Device() {
 		this.devices = new ArrayList<>();
@@ -109,6 +112,14 @@ public class Device implements Testable {
 
 	public void setTestScripts(List<TestScript> tests) {
 		this.testScripts.addAll(tests);
+	}
+
+	public List<NetworkService> getNetworkServices() {
+		return networkServices;
+	}
+
+	public void setNetworkServices(List<NetworkService> networkServices) {
+		this.networkServices = networkServices;
 	}
 
 	@Override

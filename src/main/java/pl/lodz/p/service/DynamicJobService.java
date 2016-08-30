@@ -30,8 +30,10 @@ public class DynamicJobService {
 
 			ArrayList<String> command = new ArrayList<>();
 			command.add(dynamicJob.getPath());
-			for (Parameter param : dynamicJob.getParameters()) {
-				command.add(param.getValue());
+			if (dynamicJob.getParameters() != null) {
+				for (Parameter param : dynamicJob.getParameters()) {
+					command.add(param.getValue());
+				}
 			}
 			job.getJobDataMap().put("command", command);
 			job.getJobDataMap().put("scriptId", dynamicJob.getScriptId());

@@ -36,10 +36,10 @@
             </tr>
             <tr>
                 <td>
-                    <span translate="nScannerApp.network.broadcast">Broadcast</span>
+                    <span translate="nScannerApp.network.testScripts">Test scripts</span>
                 </td>
                 <td>
-                    <a class="form-control-static" ui-sref="iPaddress.detail({id:network.broadcast.id})">{{network.broadcast.address}}</a>
+                    <a ng-class="script.lastResult && script.lastResult != 0 ? 'failed-test' : ''" ng-repeat="script in device.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
                 </td>
             </tr>
             </tbody>

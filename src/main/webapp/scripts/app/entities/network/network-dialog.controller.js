@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('nScannerApp').controller('NetworkDialogController',
-    ['$scope', '$stateParams', '$modalInstance', '$q', 'entity', 'Network', 'IPaddress',
-        function($scope, $stateParams, $modalInstance, $q, entity, Network, IPaddress) {
+    ['$scope', '$stateParams', '$modalInstance', '$q', 'entity', 'Network', 'IPaddress', 'TestScript',
+        function($scope, $stateParams, $modalInstance, $q, entity, Network, IPaddress, TestScript) {
 
         $scope.network = entity;
         $scope.networkaddresss = IPaddress.query({filter: 'network-is-null'});
@@ -19,7 +19,9 @@ angular.module('nScannerApp').controller('NetworkDialogController',
                 $scope.network = result;
             });
         };
-
+        TestScript.query(function(result){
+        	$scope.testScripts = result;
+        });
         var onSaveSuccess = function (result) {
             $scope.$emit('nScannerApp:networkUpdate', result);
             $modalInstance.close(result);

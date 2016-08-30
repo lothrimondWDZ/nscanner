@@ -58,6 +58,14 @@
                     <span ng-repeat="parameter in testScript.parameters" class="form-control-static">{{parameter.value}}&nbsp;</span>
                 </td>
             </tr>
+            <tr>
+            	<td>
+                    <span translate="nScannerApp.testScript.lastOutput">Last output</span>
+                </td>
+                <td>
+                    <textarea ng-model="testScript.lastOutput"></textarea>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

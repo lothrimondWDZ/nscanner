@@ -1,5 +1,7 @@
 package pl.lodz.p.domain.entities;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -25,16 +29,12 @@ public class Network {
 	@JoinColumn(name = "network_address")
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private IPaddress networkAddress;
-	@JoinColumn(name = "broadcast")
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	private IPaddress broadcast;
-	// @ManyToMany
-	// @JoinTable(name = "device_device", joinColumns = @JoinColumn(name =
-	// "first_device_id"),
-	// inverseJoinColumns = @JoinColumn(name = "second_device_id"))
-	// private List<Device> connectedDevices;
 	@Column
 	private Integer mask;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "test_script_network", joinColumns = @JoinColumn(name = "network_id"),
+			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
+	private List<TestScript> testScripts;
 
 	public Long getId() {
 		return id;
@@ -60,28 +60,20 @@ public class Network {
 		this.networkAddress = networkAddress;
 	}
 
-	public IPaddress getBroadcast() {
-		return broadcast;
-	}
-
-	public void setBroadcast(IPaddress broadcast) {
-		this.broadcast = broadcast;
-	}
-
-	// public List<Device> getConnectedDevices() {
-	// return connectedDevices;
-	// }
-	//
-	// public void setConnectedDevices(List<Device> connectedDevices) {
-	// this.connectedDevices = connectedDevices;
-	// }
-
 	public Integer getMask() {
 		return mask;
 	}
 
 	public void setMask(Integer mask) {
 		this.mask = mask;
+	}
+
+	public List<TestScript> getTestScripts() {
+		return testScripts;
+	}
+
+	public void setTestScripts(List<TestScript> testScripts) {
+		this.testScripts = testScripts;
 	}
 
 }

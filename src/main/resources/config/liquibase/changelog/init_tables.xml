@@ -56,7 +56,7 @@
     		name VARCHAR(100) NOT NULL,
     		description VARCHAR(255) NOT NULL,
     		port INT NOT NULL,
-    		network_interface_id INT NOT NULL REFERENCES network_interface(id)
+    		device_id INT NOT NULL REFERENCES device(id)
     	);
     </sql>
     </changeSet>
@@ -70,7 +70,8 @@
     		cron_expression VARCHAR(50) NOT NULL,
     		path VARCHAR(255) NOT NULL,
     		last_result INT,
-    		last_execution TIMESTAMP
+    		last_execution TIMESTAMP,
+    		last_output TEXT
     	);
     </sql>
     </changeSet>
@@ -102,7 +103,6 @@
     		id INT NOT NULL PRIMARY KEY,
     		name VARCHAR(100) NOT NULL,
     		network_address INT NOT NULL REFERENCES ip_address(id),
-    		broadcast INT NOT NULL REFERENCES ip_address(id),
     		mask INT NOT NULL   		
     	);
     </sql>
@@ -158,6 +158,15 @@
     	CREATE TABLE test_script_device(
     		test_script_id INT NOT NULL REFERENCES test_script(id),
     		device_id INT NOT NULL REFERENCES device(id)
+    	);
+    </sql>
+    </changeSet>
+    
+    <changeSet id="create TEST_SCRIPT_NETWORK table" author="ikucharski">
+    <sql splitStatements="false">
+    	CREATE TABLE test_script_network(
+    		test_script_id INT NOT NULL REFERENCES test_script(id),
+    		network_id INT NOT NULL REFERENCES network(id)
     	);
     </sql>
     </changeSet>

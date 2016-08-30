@@ -37,17 +37,9 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="nScannerApp.network.broadcast" for="field_broadcast_address">Broadcast address</label>
-            <input type="text" class="form-control" name="address" id="field_broadcast_address"
-                    ng-model="network.broadcast.address"
-                     />
-            <label class="control-label" translate="nScannerApp.network.broadcastType" for="field_broadcast_type">Broadcast address type</label>
-            <select class="form-control" name="type" ng-model="network.broadcast.type" id="field_broadcast_type">
-                <option value="IPv4" translate="nScannerApp.IPAddressType.IPv4">IPv4</option>
-                <option value="IPv6" translate="nScannerApp.IPAddressType.IPv6">IPv6</option>
-            </select>
+            <label class="control-label" translate="nScannerApp.network.testScripts" for="field_scripts">Test scripts</label>
+            <multiselect data-multiple="true" data-compare-by="id" ng-model="network.testScripts" options="script as ts.name for ts in testScripts" name="testScripts" id="field_scripts"></am-multiselect>
         </div>
-
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
