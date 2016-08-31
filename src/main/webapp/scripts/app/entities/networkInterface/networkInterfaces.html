@@ -19,6 +19,7 @@
                     <th translate="nScannerApp.networkInterface.name">Name</th>
                     <th has-authority="ROLE_ADMIN" translate="nScannerApp.networkInterface.description">Description</th>
                     <th translate="nScannerApp.networkInterface.type">Type</th>
+                    <th translate="nScannerApp.networkInterface.vlans">VLANs</th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,6 +29,9 @@
                     <td>{{networkInterface.name}}</td>
                     <td has-authority="ROLE_ADMIN">{{networkInterface.description}}</td>
                     <td translate="{{'nScannerApp.NetworkInterfaceType.' + networkInterface.type}}">{{networkInterface.type}}</td>
+                    <td>
+                    	<a ng-repeat="vlan in networkInterface.vlans" ui-sref="vlan.detail({id:vlan.id})">{{vlan.name}}&nbsp;</a>
+                    </td>
                     <td>
                         <button type="submit"
                                 ui-sref="networkInterface.detail({id:networkInterface.id})"

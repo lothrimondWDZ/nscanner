@@ -19,7 +19,8 @@
             "description": "Description",
             "type": "Type",
             "ipAddresses": "Addresses",
-            "addIPaddress": "Add IP address"
+            "addIPaddress": "Add IP address",
+            "vlans": "VLANs"
         }
     }
 }

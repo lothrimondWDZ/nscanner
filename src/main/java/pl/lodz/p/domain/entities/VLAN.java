@@ -36,7 +36,7 @@ public class VLAN implements Testable {
 	@JoinTable(name = "test_script_vlan", joinColumns = @JoinColumn(name = "vlan_id"),
 			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
 	private List<TestScript> testScripts;
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "network_interface_vlan",
 			joinColumns = @JoinColumn(name = "vlan_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(
 					name = "network_interface_id", referencedColumnName = "id"))

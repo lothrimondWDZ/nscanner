@@ -20,7 +20,8 @@
             "type": "Type",
             "vlans": "Child VLANs",
             "testScripts": "Test scripts",
-			"networks": "Networks"            
+			"networks": "Networks",
+			"networkInterfaces": "Network interfaces"            
         }
     }
 }
