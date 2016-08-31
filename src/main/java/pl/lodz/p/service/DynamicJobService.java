@@ -2,10 +2,14 @@ package pl.lodz.p.service;
 
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
+
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
+import org.quartz.JobKey;
 import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
@@ -20,12 +24,27 @@ import pl.lodz.p.domain.entities.Parameter;
 @Service
 public class DynamicJobService {
 
+	public static String DEFAULT_JOB_GROUP = "default group";
+	private Scheduler scheduler;
+
 	@Autowired
 	private ApplicationContext applicationContext;
 
+	@PostConstruct
+	private void initScheduler() {
+		try {
+			scheduler = new StdSchedulerFactory().getScheduler();
+			AutowiringSpringBeanJobFactory jobFactory = new AutowiringSpringBeanJobFactory();
+			jobFactory.setApplicationContext(applicationContext);
+			scheduler.setJobFactory(jobFactory);
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void schedule(DynamicJob dynamicJob) {
 		try {
-			JobDetail job = JobBuilder.newJob(DynamicJob.class).withIdentity(dynamicJob.getName(), "default group")
+			JobDetail job = JobBuilder.newJob(DynamicJob.class).withIdentity(getJobName(dynamicJob), DEFAULT_JOB_GROUP)
 					.build();
 
 			ArrayList<String> command = new ArrayList<>();
@@ -42,10 +61,6 @@ public class DynamicJobService {
 					.withIdentity(dynamicJob.getName().concat(" trigger"), "groupAll")
 					.withSchedule(CronScheduleBuilder.cronSchedule(dynamicJob.getCronExpression())).build();
 
-			Scheduler scheduler = new StdSchedulerFactory().getScheduler();
-			AutowiringSpringBeanJobFactory jobFactory = new AutowiringSpringBeanJobFactory();
-			jobFactory.setApplicationContext(applicationContext);
-			scheduler.setJobFactory(jobFactory);
 			scheduler.start();
 			scheduler.scheduleJob(job, trigger);
 
@@ -54,4 +69,20 @@ public class DynamicJobService {
 		}
 	}
 
+	public static String getJobName(DynamicJob dynamicJob) {
+		return dynamicJob.getName().concat(dynamicJob.getScriptId().toString());
+	}
+
+	public void editJob(DynamicJob job) {
+		removeJob(job);
+		schedule(job);
+	}
+
+	public void removeJob(DynamicJob job) {
+		try {
+			scheduler.deleteJob(new JobKey(getJobName(job), DEFAULT_JOB_GROUP));
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
+	}
 }

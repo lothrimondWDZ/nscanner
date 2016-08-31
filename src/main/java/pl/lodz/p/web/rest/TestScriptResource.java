@@ -88,6 +88,7 @@ public class TestScriptResource {
 			});
 		}
 		TestScript result = repository.save(testScripts);
+		service.editJob(new DynamicJob(testScripts));
 		return ResponseEntity.ok()
 				.headers(HeaderUtil.createEntityUpdateAlert("testScripts", testScripts.getId().toString()))
 				.body(result);
@@ -125,6 +126,7 @@ public class TestScriptResource {
 	@Timed
 	public ResponseEntity<Void> deleteTestScript(@PathVariable Long id) {
 		log.debug("REST request to delete TestScript : {}", id);
+		service.removeJob(new DynamicJob(repository.findOne(id)));
 		repository.delete(id);
 		return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("testScripts", id.toString())).build();
 	}
