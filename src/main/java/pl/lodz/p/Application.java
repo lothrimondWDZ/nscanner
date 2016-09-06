@@ -84,14 +84,6 @@ public class Application {
 		createDynamicJobsFromDB();
 	}
 
-	private void createDynamicJobsFromDB() {
-		List<DynamicJob> tests = scriptRepository.findAll().stream().map(test -> new DynamicJob(test))
-				.collect(Collectors.toList());
-		for (DynamicJob test : tests) {
-			jobService.schedule(test);
-		}
-	}
-
 	/**
 	 * Main method, used to run the application.
 	 */
@@ -118,4 +110,13 @@ public class Application {
 			app.setAdditionalProfiles(Constants.SPRING_PROFILE_DEVELOPMENT);
 		}
 	}
+
+	private void createDynamicJobsFromDB() {
+		List<DynamicJob> tests = scriptRepository.findAll().stream().map(test -> new DynamicJob(test))
+				.collect(Collectors.toList());
+		for (DynamicJob test : tests) {
+			jobService.schedule(test);
+		}
+	}
+
 }
