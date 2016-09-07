@@ -85,4 +85,12 @@ public class DynamicJobService {
 			e.printStackTrace();
 		}
 	}
+
+	public void unscheduleAllJobs() {
+		try {
+			scheduler.clear();
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
+	}
 }

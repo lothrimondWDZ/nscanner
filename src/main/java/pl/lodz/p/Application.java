@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -117,6 +118,11 @@ public class Application {
 		for (DynamicJob test : tests) {
 			jobService.schedule(test);
 		}
+	}
+
+	@PreDestroy
+	public void dropAllDynamicJobs() {
+		jobService.unscheduleAllJobs();
 	}
 
 }
