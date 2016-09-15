@@ -11,6 +11,11 @@ angular.module('nScannerApp')
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'run': { 
+            	method: 'POST',
+            	params: {id: '@id'},
+            	url: 'api/testScripts/run/:id/'
+            }
         });
     });

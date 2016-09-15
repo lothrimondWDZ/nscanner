@@ -99,6 +99,16 @@ angular.module('nScannerApp')
                     })
                 }]
             })
+            .state('testScript.run', {
+            	parent: 'testScript',
+            	url: '/{id}/run',
+            	data: {
+            		authorities: ['ROLE_USER'],
+            	},
+            	onEnter: ['$stateParams', '$state', 'TestScript', function($stateParams, $state, TestScript) {
+            		TestScript.run({id : $stateParams.id})
+            	}]
+            })
             .state('testScript.delete', {
                 parent: 'testScript',
                 url: '/{id}/delete',

@@ -130,4 +130,13 @@ public class TestScriptResource {
 		repository.delete(id);
 		return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("testScripts", id.toString())).build();
 	}
+
+	@RequestMapping(value = "/testScripts/run/{id}", method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<Void> runTestScript(@PathVariable Long id) {
+		log.debug("REST request to run TestScript : {}", id);
+		service.runJob(new DynamicJob(repository.findOne(id)));
+		return ResponseEntity.ok().build();
+	}
 }

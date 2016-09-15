@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
+import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
@@ -89,6 +90,24 @@ public class DynamicJobService {
 	public void unscheduleAllJobs() {
 		try {
 			scheduler.clear();
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void runJob(DynamicJob dynamicJob) {
+		try {
+			JobDataMap data = new JobDataMap();
+			ArrayList<String> command = new ArrayList<>();
+			command.add(dynamicJob.getPath());
+			if (dynamicJob.getParameters() != null) {
+				for (Parameter param : dynamicJob.getParameters()) {
+					command.add(param.getValue());
+				}
+			}
+			data.put("command", command);
+			data.put("scriptId", dynamicJob.getScriptId());
+			scheduler.triggerJob(new JobKey(getJobName(dynamicJob), DEFAULT_JOB_GROUP), data);
 		} catch (SchedulerException e) {
 			e.printStackTrace();
 		}
