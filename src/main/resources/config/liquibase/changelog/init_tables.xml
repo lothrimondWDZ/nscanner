@@ -33,7 +33,7 @@
     		id BIGINT NOT NULL PRIMARY KEY,
     		name VARCHAR(255) NOT NULL,
     		number INT NOT NULL,
-    		type VARCHAR(20) NOT NULL CHECK(type IN('QinQ','VXLAN'))
+    		type VARCHAR(20) NOT NULL CHECK(type IN('QinQ','VXLAN','TYPE_8021Q'))
     	);
     </sql>
     </changeSet>

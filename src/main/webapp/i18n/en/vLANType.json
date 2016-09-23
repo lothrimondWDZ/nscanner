@@ -3,7 +3,8 @@
         "VLANType" : {
             "null": "",
             "VXLAN": "VXLAN",
-            "QinQ": "QinQ"
+            "QinQ": "QinQ",
+            "TYPE_8021Q": "802.1q"
         }
     }
 }

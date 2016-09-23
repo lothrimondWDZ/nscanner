@@ -39,7 +39,7 @@
                     <span translate="nScannerApp.network.testScripts">Test scripts</span>
                 </td>
                 <td>
-                    <a ng-class="script.lastResult && script.lastResult != 0 ? 'failed-test' : ''" ng-repeat="script in device.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
+                    <a ng-class="script.lastResult && script.lastResult != 0 ? 'failed-test' : ''" ng-repeat="script in network.testScripts" ui-sref="testScript.detail({id:script.id})">{{script.name}}&nbsp;</a>
                 </td>
             </tr>
             </tbody>

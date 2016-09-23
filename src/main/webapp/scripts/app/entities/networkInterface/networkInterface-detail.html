@@ -42,6 +42,14 @@
                     <span ng-repeat="address in networkInterface.addresses" class="form-control-static">{{address.address}}&#13;&#10;</span>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <span translate="nScannerApp.networkInterface.vlans">VLANs</span>
+                </td>
+                <td>
+                    <a ng-repeat="vlan in networkInterface.vlans" ui-sref="vlan.detail({id:vlan.id})">{{vlan.name}}&nbsp;</a>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
