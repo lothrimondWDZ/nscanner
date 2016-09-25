@@ -19,7 +19,9 @@ angular.module('nScannerApp')
 
         $scope.compareDate = function(date){
         	if(date) {
-        		return (new Date(date)).getTime() < (new Date()).getTime();
+        		var parts = date.split(' ');
+        		parts = parts[0].split('-');
+        		return (new Date(parts[2], parts[1]-1, parts[0])).getTime() < (new Date()).getTime();
         	}
         	return false;
         };

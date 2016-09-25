@@ -32,7 +32,7 @@ angular.module('nScannerApp').controller('DeviceDialogController',
         $scope.$watch('device.expirationDate', function (newValue) {
             $scope.device.expirationDate = $filter('date')(newValue, 'dd-MM-yyyy HH:mm:ss'); 
         });
-
+        
         var onSaveSuccess = function (result) {
             $scope.$emit('nScannerApp:deviceUpdate', result);
             $modalInstance.close(result);
