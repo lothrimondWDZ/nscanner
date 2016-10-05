@@ -1,5 +1,6 @@
 package pl.lodz.p.domain.entities;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -36,10 +37,7 @@ public class VLAN implements Testable {
 	@JoinTable(name = "test_script_vlan", joinColumns = @JoinColumn(name = "vlan_id"),
 			inverseJoinColumns = @JoinColumn(name = "test_script_id"))
 	private List<TestScript> testScripts;
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "network_interface_vlan",
-			joinColumns = @JoinColumn(name = "vlan_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(
-					name = "network_interface_id", referencedColumnName = "id"))
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "vlans")
 	private List<NetworkInterface> networkInterfaces;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "vlan_vlan", joinColumns = @JoinColumn(name = "first_vlan_id"), inverseJoinColumns = @JoinColumn(
@@ -118,5 +116,13 @@ public class VLAN implements Testable {
 	public int runScript(TestScript script) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public void addNetworkInterface(NetworkInterface networkInterface) {
+		if (this.networkInterfaces == null) {
+			this.networkInterfaces = Arrays.asList(networkInterface);
+		} else {
+			this.networkInterfaces.add(networkInterface);
+		}
 	}
 }

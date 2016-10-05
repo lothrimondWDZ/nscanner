@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('nScannerApp').controller('NetworkInterfaceDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'NetworkInterface',
-        function($scope, $stateParams, $modalInstance, entity, NetworkInterface) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'NetworkInterface', 'VLAN',
+        function($scope, $stateParams, $modalInstance, entity, NetworkInterface, VLAN) {
 
         $scope.networkInterface = entity;
         $scope.load = function(id) {
@@ -10,7 +10,10 @@ angular.module('nScannerApp').controller('NetworkInterfaceDialogController',
                 $scope.networkInterface = result;
             });
         };
-
+        VLAN.query(function(result) {
+        	$scope.vlans = result;
+        });
+        
         $scope.addIPadd = function() {
         	if($scope.networkInterface.addresses == undefined){
         		$scope.networkInterface.addresses = [];

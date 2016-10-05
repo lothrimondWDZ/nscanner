@@ -45,10 +45,6 @@
             <label class="control-label" translate="nScannerApp.vlan.networks" for="field_networks">Networks</label>
             <multiselect data-multiple="true" data-compare-by="id" ng-model="vlan.networks" options="network as net.name for net in networks" name="networks" id="field_networks"></am-multiselect>
         </div>
-        <div class="form-group">
-            <label class="control-label" translate="nScannerApp.vlan.networkInterfaces" for="field_interfaces">Network interfaces</label>
-            <multiselect data-multiple="true" data-compare-by="id" ng-model="vlan.networkInterfaces" options="interface as interface.name for interface in networkInterfaces" name="interfaces" id="field_interfaces"></am-multiselect>
-        </div>
 
     </div>
     <div class="modal-footer">

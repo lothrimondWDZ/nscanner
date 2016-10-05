@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -33,7 +35,10 @@ public class NetworkInterface {
 	private NetworkInterfaceType type;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "networkInterface")
 	private List<IPaddress> addresses;
-	@ManyToMany(mappedBy = "networkInterfaces", fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "network_interface_vlan", joinColumns = @JoinColumn(name = "network_interface_id",
+			referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "vlan_id",
+			referencedColumnName = "id"))
 	private List<VLAN> vlans;
 
 	public Long getId() {

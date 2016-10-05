@@ -33,6 +33,10 @@
             </select>
         </div>
         <div class="form-group">
+            <label class="control-label" translate="nScannerApp.networkInterface.vlans" for="field_vlans">Network interfaces</label>
+            <multiselect data-multiple="true" data-compare-by="id" ng-model="networkInterface.vlans" options="vlan as vlan.name for vlan in vlans" name="vlans" id="field_vlans"></am-multiselect>
+        </div>
+        <div class="form-group">
 	        <button type="button" ng-click="addIPadd()" class="btn btn-primary">
 	            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="nScannerApp.networkInterface.addIPaddress">Add IP address</span>
 	        </button>

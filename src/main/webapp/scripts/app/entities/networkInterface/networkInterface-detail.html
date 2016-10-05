@@ -54,6 +54,15 @@
         </table>
     </div>
 
+	<div class="dropdown" auto-close="outsideClick">
+	<button class="btn btn-default dropdown-toggle" type="button" id="individualDrop" data-toggle="dropdown">Connect to interface:<span class="caret pull-right"></span></button>
+	<span ng-show="submitted"><label class="error">Select an interface</label></span>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="individualDrop">
+	    <input disable-auto-close type="search" ng-model="searchFilter" placeholder="Search"></input>
+	    <li role="presentation" ng-repeat="int in interfaces | filter: searchFilter"><a role="menuitem" ng-click="connectTo(int.id)">{{int.name}}</a></li>  
+	</ul>
+	</div>
+
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">

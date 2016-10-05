@@ -55,7 +55,7 @@ angular.module('nScannerApp')
             })
             .state('networkInterface.new', {
                 parent: 'networkInterface',
-                url: '/new',
+                url: '/new/:deviceName',
                 data: {
                     authorities: ['ROLE_USER'],
                 },
@@ -67,7 +67,7 @@ angular.module('nScannerApp')
                         resolve: {
                             entity: function () {
                                 return {
-                                    name: null,
+                                    name: $stateParams.deviceName,
                                     description: null,
                                     type: null,
                                     id: null

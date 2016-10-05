@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('nScannerApp').controller('VLANDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'VLAN', 'TestScript', 'Network', 'NetworkInterface',
-        function($scope, $stateParams, $modalInstance, entity, VLAN, TestScript, Network, NetworkInterface) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'VLAN', 'TestScript', 'Network',
+        function($scope, $stateParams, $modalInstance, entity, VLAN, TestScript, Network) {
 
         $scope.vlan = entity;
         $scope.load = function(id) {
@@ -18,9 +18,6 @@ angular.module('nScannerApp').controller('VLANDialogController',
         });
         Network.query(function(result){
         	$scope.networks = result;
-        });
-        NetworkInterface.query(function(result){
-        	$scope.networkInterfaces = result;
         });
 
         var onSaveSuccess = function (result) {
