@@ -16,19 +16,19 @@
         <div class="form-group">
             <label class="control-label" translate="nScannerApp.network.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="network.name"
+                    ng-model="network.name" required
                      />
         </div>
         <div class="form-group">
             <label class="control-label" translate="nScannerApp.network.mask" for="field_mask">Mask</label>
             <input type="number" class="form-control" name="mask" id="field_mask"
-                    ng-model="network.mask"
+                    ng-model="network.mask" required
                      />
         </div>
         <div class="form-group">
             <label class="control-label" translate="nScannerApp.network.networkAddress" for="field_network_address">Network address</label>
             <input type="text" class="form-control" name="address" id="field_network_address"
-                    ng-model="network.networkAddress.address"
+                    ng-model="network.networkAddress.address" required
                      />
             <label class="control-label" translate="nScannerApp.network.networkAddressType" for="field_network_type">Network address type</label>
             <select class="form-control" name="type" ng-model="network.networkAddress.type" id="field_network_type">
