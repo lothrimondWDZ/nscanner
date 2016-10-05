@@ -203,3 +203,9 @@ ul#strengthBar {
 	color: red;
 	font-weight: bold;
 }
+
+.footer {
+	background-image: url("../images/cti.png");
+	background-repeat: no-repeat;
+	height: 140px;
+}
