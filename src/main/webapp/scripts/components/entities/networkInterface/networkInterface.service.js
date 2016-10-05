@@ -11,14 +11,6 @@ angular.module('nScannerApp')
                     return data;
                 }
             },
-            'update': { method:'PUT' },
-            'connect': {
-            	method:'POST',
-            	params: {
-            		first: '@first',
-            		second: '@second'
-            	},
-            	url: 'api/networkInterfaces/connect/:first/:second' 	
-           }
+            'update': { method:'PUT' }
         });
     });

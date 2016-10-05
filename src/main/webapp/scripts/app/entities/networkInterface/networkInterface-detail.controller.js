@@ -13,8 +13,24 @@ angular.module('nScannerApp')
         	$scope.interfaces = result;
         });
         $scope.connectTo = function(intId) {
-        	NetworkInterface.connect({first: $scope.networkInterface.id, second: intId});
+        	NetworkInterface.get({id: intId}, function(result) {
+        		$scope.networkInterface.vlans = $scope.arrayUnique($scope.networkInterface.vlans.concat(result.vlans));
+        		NetworkInterface.update($scope.networkInterface);
+            });
         };
+        
+        $scope.arrayUnique = function (array) {
+            var a = array.concat();
+            for(var i=0; i<a.length; ++i) {
+                for(var j=i+1; j<a.length; ++j) {
+                    if(a[i] === a[j])
+                        a.splice(j--, 1);
+                }
+            }
+
+            return a;
+        }
+        
         var unsubscribe = $rootScope.$on('nScannerApp:networkInterfaceUpdate', function(event, result) {
             $scope.networkInterface = result;
         });

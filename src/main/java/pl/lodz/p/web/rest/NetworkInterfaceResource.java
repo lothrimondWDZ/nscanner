@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.lodz.p.domain.entities.NetworkInterface;
-import pl.lodz.p.domain.entities.VLAN;
 import pl.lodz.p.repository.NetworkInterfaceRepository;
 import pl.lodz.p.repository.VLANRepository;
 import pl.lodz.p.web.rest.util.HeaderUtil;
@@ -129,29 +128,4 @@ public class NetworkInterfaceResource {
 				.build();
 	}
 
-	@RequestMapping(value = "/networkInterfaces/connect/{firstId}/{secondId}", method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	@Timed
-	public ResponseEntity<NetworkInterface> connectNetworkInterface(@PathVariable Long firstId,
-			@PathVariable Long secondId) throws URISyntaxException {
-		NetworkInterface networkInterface = repository.findOne(firstId);
-		NetworkInterface other = repository.findOne(secondId);
-		networkInterface.getAddresses().forEach(address -> {
-			if (address.getNetworkInterface() == null) {
-				address.setNetworkInterface(networkInterface);
-			}
-		});
-		List<VLAN> vlans = other.getVlans();
-		vlans.size();
-		networkInterface.setVlans(vlans);
-		NetworkInterface result = repository.save(networkInterface);
-		for (VLAN v : result.getVlans()) {
-			v.addNetworkInterface(result);
-			vlanRepository.save(v);
-		}
-		log.debug("REST request to connect NetworkInterface {} to {}", firstId, secondId);
-		return ResponseEntity.ok()
-				.headers(HeaderUtil.createEntityUpdateAlert("networkInterface", networkInterface.getId().toString()))
-				.body(result);
-	}
 }

@@ -35,7 +35,7 @@ public class NetworkInterface {
 	private NetworkInterfaceType type;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "networkInterface")
 	private List<IPaddress> addresses;
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "network_interface_vlan", joinColumns = @JoinColumn(name = "network_interface_id",
 			referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "vlan_id",
 			referencedColumnName = "id"))
